@@ -1,0 +1,27 @@
+@import "../../shared/styles/variables";
+@import "../../shared/styles/mixins";
+
+footer{
+  width: 100%;
+  height: 70px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+
+  @include text($primaryFont, 12px);
+
+  div{
+    margin: 20px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    a{
+      text-decoration: none;
+      color: $primaryColor;
+    }
+  }
+}

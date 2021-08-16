@@ -1,1 +1,19 @@
-<p>footer works!</p>
+<footer>
+  <div class="left">
+    <a [routerLink]="['/shipmentAndReturn']">Доставка та повернення</a>
+    <a [routerLink]="['/termsOfUse']">Умови використання</a>
+    <a [routerLink]="['/shops']">Магазини</a>
+  </div>
+
+  <div class="center">
+    <a [routerLink]="['/contacts']">Контакти</a>
+    <a href="#">Facebook</a>
+    <a href="#">Instagram</a>
+  </div>
+
+  <div class="right">
+    <span>Зареєструйтесь, щоб отримувати новини про нові колекції та події</span>
+    <input type="text" placeholder="Email Адреса">
+    <button type="submit">Підписатися</button>
+  </div>
+</footer>

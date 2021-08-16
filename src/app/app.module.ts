@@ -10,10 +10,13 @@ import { AboutComponent } from './pages/about/about.component';
 import { VipComponent } from './pages/vip/vip.component';
 import { BasketComponent } from './pages/basket/basket.component';
 import { LoginComponent } from './pages/login/login.component';
-import { AdminComponent } from './pages/admin/admin.component';
 import { LikedComponent } from './pages/liked/liked.component';
 import { ProductsComponent } from './pages/products/products.component';
 import { ProductDetailsComponent } from './pages/product-details/product-details.component';
+import { ShipmentAndReturnComponent } from './pages/shipment-and-return/shipment-and-return.component';
+import { TermsOfUseComponent } from './pages/terms-of-use/terms-of-use.component';
+import { ShopsComponent } from './pages/shops/shops.component';
+import { ContactsComponent } from './pages/contacts/contacts.component';
 
 @NgModule({
   declarations: [
@@ -25,10 +28,13 @@ import { ProductDetailsComponent } from './pages/product-details/product-details
     VipComponent,
     BasketComponent,
     LoginComponent,
-    AdminComponent,
     LikedComponent,
     ProductsComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    ShipmentAndReturnComponent,
+    TermsOfUseComponent,
+    ShopsComponent,
+    ContactsComponent
   ],
   imports: [
     BrowserModule,

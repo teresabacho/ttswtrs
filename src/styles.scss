@@ -1,1 +1,26 @@
-/* You can add global styles to this file, and also import other style files */
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: Fira Sans;
+  src: url("/assets/fonts/FiraSans-Regular.ttf");
+}
+
+@font-face {
+  font-family: Fira Sans Bold;
+  src: url("/assets/fonts/FiraSans-Bold.ttf");
+}
+
+
+.container{
+  width: 100%;
+  min-height: 80vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
