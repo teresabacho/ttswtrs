@@ -1,6 +1,28 @@
 @import "./src/app/shared/styles/variables";
 @import "./src/app/shared/styles/mixins";
 
-img{
-  width: 100%;
+.container{
+  padding: 0 0;
 }
+
+.image{
+  width: 100%;
+  min-height: 90vh;
+
+  @media screen and (min-width: 1441px){
+    height: 95vh;
+  }
+  background-image: url("../../../assets/images/D_banner_1944x.jpg");
+  background-position: center;
+  background-size: cover;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img{
+    width: 75%;
+  }
+}
+
+

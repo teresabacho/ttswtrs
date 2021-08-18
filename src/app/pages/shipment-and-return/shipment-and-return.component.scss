@@ -1,0 +1,10 @@
+@import "../../shared/styles/variables";
+@import "../../shared/styles/mixins";
+
+.firstParagraph{
+  @include text($primaryFont, 15px);
+}
+
+.lastParagraph{
+  margin-bottom: 40px;
+}

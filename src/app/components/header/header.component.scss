@@ -3,29 +3,54 @@
 
 header {
   width: 100%;
-  height: 50px;
+  height: 10vh;
   background-color: $bgColor;
-  border-top: 1px solid #1d1d1d;
-  border-bottom: 1px solid #1d1d1d;
+
+  @media screen and (min-width: 1441px){
+    height: 5vh;
+  }
 
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
 
   .menuContainer{
     width: 100%;
+    margin-top: 2vh;
     background-color: $bgColor;
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
+    align-items: baseline;
 
+    .menuWrapperLeft{
+      width: 70%;
+      display: flex;
+      flex-direction: row;
+      justify-content: start;
+      align-items: baseline;
+    }
+    .menuWrapperRight{
+      width: 30%;
+
+      .menuInnerWrapper{
+        padding-right: 3vw;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+      }
+    }
+
+    .logo{
+      @include text($logoFont, 22px);
+      padding-left: 3vw;
+    }
 
     a{
-      margin: 5px;
+      position: relative;
+      margin: 10px;
       text-decoration: none;
-      @include text($primaryFont, 12px);
+      @include text($primaryFont, 14px);
     }
   }
 
@@ -37,37 +62,34 @@ header {
   }
 }
 
+.basket:before{
+  content: "";
+  @include text($primaryFont, 8px);
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  top: -5px;
+  left: 99%;
+  background-color: $sdPrimaryColor;
+}
+
+
+
 @media screen and (max-width: 769px){
   header{
     .menuContainer{
-      //display: none;
-      display: flex;
-
-      position: fixed;
-      top: 0;
-      right: 0;
-      width: 25%;
-      height: 100%;
-      flex-direction: column;
-
-      .menuWrapper{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-
-        a{
-          @include text($primaryFont, 12px);
-        }
-      }
-
+      display: none;
     }
 
-    //.burgerMenu{
-    //  display: block;
-    //}
+    .burgerMenu{
+      display: block;
+    }
+
+
   }
 }
+
 
 
 

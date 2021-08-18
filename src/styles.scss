@@ -1,26 +1,47 @@
+@import "./app/shared/styles/variables";
+@import "./app/shared/styles/mixins";
+
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+
 @font-face {
-  font-family: Fira Sans;
-  src: url("/assets/fonts/FiraSans-Regular.ttf");
+  font-family: Raleway;
+  src: url("/assets/fonts/Raleway-Medium.ttf");
 }
 
 @font-face {
-  font-family: Fira Sans Bold;
-  src: url("/assets/fonts/FiraSans-Bold.ttf");
+  font-family: RalewayBold;
+  src: url("/assets/fonts/Raleway-Bold.ttf");
+}
+
+@font-face {
+  font-family: Padaloma;
+  src: url("/assets/fonts/Padaloma_i.ttf");
 }
 
 
 .container{
   width: 100%;
-  min-height: 80vh;
+  min-height: 70vh;
 
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
+
+  padding: 0 10vw;
+
+  h1{
+    margin: 5vh 0;
+    @include text($boldPrimaryFont, 24px);
+  }
+
+  p{
+    @include text($primaryFont, 14px);
+    margin: 20px 0;
+  }
 }
