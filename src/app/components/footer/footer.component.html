@@ -1,19 +1,32 @@
 <footer>
-  <div class="left">
-    <a [routerLink]="['/shipmentAndReturn']">Доставка та повернення</a>
-    <a [routerLink]="['/termsOfUse']">Умови використання</a>
-    <a [routerLink]="['/shops']">Магазини</a>
+  <div class="top">
+    <a [routerLink]="['/']" class="logo">TTSWTRS</a>
   </div>
+  <div class="mid">
+    <div class="midRight">
+      <div class="title">Info</div>
+      <span></span>
+      <div class="list">
+        <div class="item">Shipping & returns</div>
+        <div class="item">Terms of service</div>
+        <div class="item">Customer service</div>
+        <div class="item">Order status</div>
+        <div class="item">For press</div>
+      </div>
+    </div>
+    <div class="midLeft">
+      <div class="title">NEWSLETTER</div>
+      <span></span>
+      <input type="text" class="mail" placeholder="E-mail">
+      <button>SUBSCRIBE</button>
+    </div>
 
-  <div class="center">
-    <a [routerLink]="['/contacts']">Контакти</a>
-    <a href="#">Facebook</a>
-    <a href="#">Instagram</a>
   </div>
-
-  <div class="right">
-    <span>Зареєструйтесь, щоб отримувати новини про нові колекції та події</span>
-    <input type="text" placeholder="Email Адреса">
-    <button type="submit">Підписатися</button>
+  <div class="bot">
+    <div>
+      <i class="uil uil-facebook"></i>
+      <i class="uil uil-instagram-alt"></i>
+      <i class="uil uil-twitter"></i>
+    </div>
   </div>
 </footer>
