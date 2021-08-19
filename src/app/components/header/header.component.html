@@ -24,10 +24,38 @@
     </div>
   </div>
 
-<!--  <div class="burgerMenuContainer">-->
-<!--    <a [routerLink]="['/']" class="logo">TTSWTRS</a>-->
+  <div class="burgerMenuContainer">
+    <div class="burgerMenuTop">
+      <div class="menuWrapperLeft">
+        <div class="menuInnerWrapper">
+          <a [routerLink]="['/']" class="logo">TTSWTRS</a>
+        </div>
+      </div>
+      <div class="menuWrapperRight">
+        <div class="menuInnerWrapper">
+          <a [routerLink]="['/basket']" class="basket"><i class="uil uil-shopping-bag"></i></a>
 
-<!--  </div>-->
+          <div class="burgerMenuButton"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="burgerMenuBottom">
+      <div class="burgerMenuWrapperTop">
+        <div class="inputBox">
+          <input type="text" placeholder="Search...">
+        </div>
+        <a [routerLink]="['/products']">Колекції</a>
+        <a [routerLink]="['/products']">Категорії</a>
+        <a [routerLink]="['/vip']">VIP-примірка на дому</a>
+        <a [routerLink]="['/about']">Про нас</a>
+      </div>
+      <div class="burgerMenuWrapperBottom">
+        <a [routerLink]="['/login']" class="margin">Увійти</a>
+        <a [routerLink]="['/liked']">Обране</a>
+      </div>
+    </div>
+  </div>
 
 
 </header>

@@ -4,9 +4,9 @@
 header {
   width: 100%;
   height: 10vh;
-  background-color: $bgColor;
+  background-color: $lightColor;
 
-  @media screen and (min-width: 1441px){
+  @media screen and (min-width: 1441px) {
     height: 5vh;
   }
 
@@ -15,54 +15,53 @@ header {
   justify-content: space-between;
   align-items: center;
 
-  .menuContainer{
+  .menuContainer {
     width: 100%;
     margin-top: 2vh;
-    background-color: $bgColor;
+    //background-color: rgba(255, 248, 242, 0);
     display: flex;
     flex-direction: row;
     align-items: baseline;
-
-    .menuWrapperLeft{
-      width: 70%;
-      display: flex;
-      flex-direction: row;
-      justify-content: start;
-      align-items: baseline;
-    }
-    .menuWrapperRight{
-      width: 30%;
-
-      .menuInnerWrapper{
-        padding-right: 3vw;
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-end;
-      }
-    }
-
-    .logo{
-      @include text($logoFont, 22px);
-      padding-left: 3vw;
-    }
-
-    a{
-      position: relative;
-      margin: 10px;
-      text-decoration: none;
-      @include text($primaryFont, 14px);
-    }
   }
 
-  .burgerMenu{
+  .burgerMenuContainer {
     display: none;
-    width: 25px;
-    height: 25px;
-    background-color: $sdPrimaryColor;
   }
 }
 
-.basket:before{
+
+.menuWrapperLeft {
+  width: 70%;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: baseline;
+}
+
+.menuWrapperRight {
+  width: 30%;
+
+  .menuInnerWrapper {
+    padding-right: 3vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+}
+
+.logo {
+  @include text($logoFont, 22px);
+  padding-left: 3vw;
+}
+
+a {
+  position: relative;
+  margin: 0 10px;
+  text-decoration: none;
+  @include text($primaryFont, 14px);
+}
+
+.basket:before {
   content: "";
   @include text($primaryFont, 8px);
   position: absolute;
@@ -75,17 +74,153 @@ header {
 }
 
 
-
-@media screen and (max-width: 769px){
-  header{
-    .menuContainer{
+@media screen and (max-width: 880px) {
+  header {
+    .menuContainer {
       display: none;
     }
 
-    .burgerMenu{
-      display: block;
-    }
+    .burgerMenuContainer {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
 
+      position: relative;
+      justify-content: flex-start;
+      align-items: flex-start;
+      height: 10vh;
+
+      .burgerMenuTop {
+        width: 100%;
+        height: 10vh;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+
+        //.menuWrapperLeft {
+        //
+        //  background-color: #3d998e;
+        //}
+
+
+        .menuWrapperRight {
+          display: flex;
+          flex-direction: row;
+          justify-content: flex-end;
+          align-items: baseline;
+
+          .menuInnerWrapper {
+            padding-right: 3vw;
+            align-items: baseline;
+            //background-color: $sdPrimaryColor;
+
+            .burgerMenuButton {
+              width: 12px;
+              height: 1px;
+              border-radius: 10px;
+              background-color: $primaryColor;
+              position: relative;
+              margin-left: 2vw;
+            }
+
+            .burgerMenuButton:before {
+              content: "";
+              display: block;
+              position: absolute;
+              width: 120%;
+              height: 1px;
+              border-radius: 10px;
+              background-color: $primaryColor;
+              top: -4px;
+              left: 0;
+            }
+
+          }
+        }
+      }
+
+      .burgerMenuBottom {
+        //display: none;
+        width: 100vw;
+        height: 90vh;
+        padding: 2vh 5vh;
+        @include text($primaryFont, 20px);
+        background-color: $lightColor;
+        position: absolute;
+        top: 10vh;
+
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        justify-content: space-around;
+
+        .burgerMenuWrapperTop {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+
+          .inputBox {
+            width: 100%;
+            position: relative;
+            margin-bottom: 3vh;
+          }
+
+          .inputBox:after {
+            content: '';
+            position: absolute;
+            height: 1px;
+            width: 100%;
+            display: block;
+            left: 0;
+            right: 0;
+            background: $primaryColor;
+            border-radius: 1px;
+          }
+
+          input {
+            width: 100%;
+            display: inline-block;
+            text-align: start;
+            appearance: auto;
+
+            @include text($primaryFont, 18px);
+
+            line-height: 2rem;
+            letter-spacing: 0.035em;
+            border: none;
+            background: transparent;
+            padding: 1vh 0;
+
+          }
+
+          input:focus {
+            outline: none;
+          }
+
+          input::placeholder {
+            @include text($primaryFont, 18px);
+          }
+
+
+
+          a {
+            margin: 2vh 0;
+            @include text($primaryFont, 18px);
+          }
+        }
+
+        .burgerMenuWrapperBottom{
+
+          a{
+            margin: 0 3vh 0 0;
+          }
+        }
+
+
+      }
+    }
 
   }
 }
