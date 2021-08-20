@@ -5,19 +5,27 @@ header {
   width: 100%;
   height: 10vh;
   background-color: $lightColor;
+  //position: relative;
+
 
   @media screen and (min-width: 1441px) {
     height: 5vh;
   }
 
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
+
+  .menuMain {
+    width: 100%;
+    height: 10vh;
+    position: relative;
+  }
 
   .menuContainer {
     width: 100%;
-    margin-top: 2vh;
+    margin-top: 3vh;
     //background-color: rgba(255, 248, 242, 0);
     display: flex;
     flex-direction: row;
@@ -29,6 +37,12 @@ header {
   }
 }
 
+a{
+  position: relative;
+  text-decoration: none;
+  @include text($primaryFont, 14px);
+}
+
 
 .menuWrapperLeft {
   width: 70%;
@@ -36,6 +50,17 @@ header {
   flex-direction: row;
   justify-content: start;
   align-items: baseline;
+
+  a {
+    display: inline-block;
+    width: 120px;
+  }
+
+  .logo {
+    @include text($logoFont, 22px);
+    padding-left: 40px;
+    width: 280px;
+  }
 }
 
 .menuWrapperRight {
@@ -47,18 +72,14 @@ header {
     flex-direction: row;
     justify-content: flex-end;
   }
+
+  a{
+    margin: 0 10px;
+  }
 }
 
-.logo {
-  @include text($logoFont, 22px);
-  padding-left: 3vw;
-}
-
-a {
-  position: relative;
-  margin: 0 10px;
-  text-decoration: none;
-  @include text($primaryFont, 14px);
+.basket, .search{
+  width: 14px;
 }
 
 .basket:before {
@@ -72,6 +93,65 @@ a {
   left: 99%;
   background-color: $sdPrimaryColor;
 }
+
+
+.fallContainer {
+  width: 100%;
+  padding-left: 280px;
+  padding-bottom: 20px;
+  background-color: $lightColor;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  @include text($primaryFont, 14px);
+
+  .fallContainerCollCat{
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-top: 20px;
+  }
+
+  .exploreContainer{
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-top: 20px;
+  }
+
+  a {
+    display: inline-block;
+    width: 120px;
+    margin-top: 10px;
+    color: $primaryColor;
+  }
+  //span {
+  //  display: inline-block;
+  //  width: 100px;
+  //  margin: 20px 0 0 0;
+  //  @include text($primaryFont, 14px, $sideColor);
+  //  color: $sideColor;
+  //  //letter-spacing: 1.1px;
+  //}
+}
+
+.collectionsContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.categoriesContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  height: 15vh;
+}
+
 
 
 @media screen and (max-width: 880px) {
@@ -116,8 +196,8 @@ a {
             align-items: baseline;
             //background-color: $sdPrimaryColor;
 
-            .burgerMenuButton {
-              width: 12px;
+            .burgerMenuButtonClosed {
+              width: 13px;
               height: 1px;
               border-radius: 10px;
               background-color: $primaryColor;
@@ -125,16 +205,40 @@ a {
               margin-left: 2vw;
             }
 
-            .burgerMenuButton:before {
+            .burgerMenuButtonOpened {
+              width: 15px;
+              height: 1px;
+              border-radius: 10px;
+              background-color: $primaryColor;
+              position: relative;
+              margin-left: 2vw;
+              //transform: rotateX(45deg);
+              transform: rotate(45deg) translate(-2px, -1px);
+            }
+
+            .burgerMenuButtonClosed:before {
               content: "";
               display: block;
               position: absolute;
-              width: 120%;
+              width: 15px;
               height: 1px;
               border-radius: 10px;
               background-color: $primaryColor;
               top: -4px;
               left: 0;
+            }
+
+            .burgerMenuButtonOpened:before {
+              content: "";
+              display: block;
+              position: absolute;
+              width: 100%;
+              height: 1px;
+              border-radius: 10px;
+              background-color: $primaryColor;
+              top: -4px;
+              left: 0;
+              transform: rotate(90deg) translate(4px, 0px);
             }
 
           }
@@ -204,16 +308,15 @@ a {
           }
 
 
-
           a {
             margin: 2vh 0;
             @include text($primaryFont, 18px);
           }
         }
 
-        .burgerMenuWrapperBottom{
+        .burgerMenuWrapperBottom {
 
-          a{
+          a {
             margin: 0 3vh 0 0;
           }
         }
@@ -222,13 +325,22 @@ a {
   }
 }
 
-.displayNone{
+.displayNone {
   display: none;
 }
 
-.displayFlex{
+.displayFlex {
   display: flex;
 }
+
+
+//.overflowHidden{
+//  overflow: hidden;
+//}
+//
+//.overflowVisible{
+//  overflow: visible;
+//}
 
 
 

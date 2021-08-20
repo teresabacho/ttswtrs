@@ -1,28 +1,73 @@
 <header>
 
-  <div class="menuContainer">
-    <div class="menuWrapperLeft">
-      <div class="menuInnerWrapper">
-        <a [routerLink]="['/']" class="logo">TTSWTRS</a>
+  <div class="menuMain">
+    <div class="menuContainer">
+      <div class="menuWrapperLeft">
+        <div class="menuInnerWrapper">
+          <a [routerLink]="['/']" class="logo">TTSWTRS</a>
+        </div>
+        <div class="menuInnerWrapper">
+          <a [routerLink]="['/products/collections']" (mouseover)="openCollections()" (click)="closeCollections()">Shop</a>
+          <a [routerLink]="['/home']" (mouseover)="openExplore()" (click)="closeExplore()">Explore</a>
+          <!--          <a [routerLink]="['/vip']">VIP-примірка на дому</a>-->
+          <!--          <a [routerLink]="['/about']">Про нас</a>-->
+        </div>
       </div>
-      <div class="menuInnerWrapper">
-        <a [routerLink]="['/products']">Колекції</a>
-        <a [routerLink]="['/products']">Категорії</a>
-        <a [routerLink]="['/vip']">VIP-примірка на дому</a>
-        <a [routerLink]="['/about']">Про нас</a>
+      <div class="menuWrapperRight">
+        <div class="menuInnerWrapper">
+          <a href="#" class="search">
+            <i class="uil uil-search"></i>
+          </a>
+          <a [routerLink]="['/login']" class="margin">Увійти</a>
+          <a [routerLink]="['/liked']">Обране</a>
+          <a [routerLink]="['/basket']" class="basket"><i class="uil uil-shopping-bag"></i></a>
+        </div>
+      </div>
+
+
+    </div>
+
+    <div class="fallContainer displayNone">
+<!--      <div class="fallContainerWrapper fallContainerTop" (mouseover)="openCollections()">-->
+<!--        <span>Collections</span>-->
+<!--        <span>Categories</span>-->
+<!--      </div>-->
+      <div class="fallContainerWrapper fallContainerBottom fallContainerCollCat displayNone"
+           (mouseover)="openCollections()">
+        <div class="collectionsContainer">
+          <a [routerLink]="['/products/fw21']" (click)="closeCollections()">FW 21</a>
+          <a [routerLink]="['/products/ss21']" (click)="closeCollections()">SS 21</a>
+        </div>
+        <div class="categoriesContainer">
+          <a [routerLink]="['/products/accessories']" (click)="closeCollections()">Accessories</a>
+          <a [routerLink]="['/products/top']" (click)="closeCollections()">Top</a>
+          <a [routerLink]="['/products/dress']" (click)="closeCollections()">Dress</a>
+          <a [routerLink]="['/products/coat']" (click)="closeCollections()">Coat</a>
+        </div>
+      </div>
+
+      <div class="fallContainerWrapper fallContainerBottom exploreContainer displayNone" (mouseover)="openExplore()">
+        <a [routerLink]="['/vip']" (click)="closeCollections()">VIP</a>
+        <a [routerLink]="['/about']" (click)="closeCollections()">About us</a>
       </div>
     </div>
-    <div class="menuWrapperRight">
-      <div class="menuInnerWrapper">
-        <a href="#">
-          <i class="uil uil-search"></i>
-        </a>
-        <a [routerLink]="['/login']" class="margin">Увійти</a>
-        <a [routerLink]="['/liked']">Обране</a>
-        <a [routerLink]="['/basket']" class="basket"><i class="uil uil-shopping-bag"></i></a>
-      </div>
-    </div>
+
+    <!--    <div class="exploreContainer displayNone" (mouseout)="closeExplore()">-->
+    <!--      <div class="collectionsContainer" (mouseout)="closeCollections()">-->
+    <!--        <span>Collections</span>-->
+    <!--        <a [routerLink]="['/liked']">FW 21</a>-->
+    <!--        <a [routerLink]="['/liked']">SS 21</a>-->
+    <!--      </div>-->
+    <!--      <div class="categoriesContainer">-->
+    <!--        <span>Categories</span>-->
+    <!--        <a [routerLink]="['/liked']">Accessories</a>-->
+    <!--        <a [routerLink]="['/liked']">Top</a>-->
+    <!--        <a [routerLink]="['/liked']">Dress</a>-->
+    <!--      </div>-->
+    <!--    </div>-->
+
   </div>
+
 
   <div class="burgerMenuContainer">
     <div class="burgerMenuTop">
@@ -35,7 +80,7 @@
         <div class="menuInnerWrapper">
           <a [routerLink]="['/basket']" class="basket"><i class="uil uil-shopping-bag"></i></a>
 
-          <div class="burgerMenuButton" (click)="openBurger()"></div>
+          <div class="burgerMenuButton burgerMenuButtonClosed" (click)="openBurger()"></div>
         </div>
       </div>
     </div>
@@ -45,14 +90,14 @@
         <div class="inputBox">
           <input type="text" placeholder="Search...">
         </div>
-        <a [routerLink]="['/products']">Колекції</a>
-        <a [routerLink]="['/products']">Категорії</a>
-        <a [routerLink]="['/vip']">VIP-примірка на дому</a>
-        <a [routerLink]="['/about']">Про нас</a>
+        <a [routerLink]="['/products/collections']" (click)="closeBurger()">Shop</a>
+        <!--        <a [routerLink]="['/products/collections']" (click)="closeBurger()">Категорії</a>-->
+        <a [routerLink]="['/vip']" (click)="closeBurger()">VIP-примірка на дому</a>
+        <a [routerLink]="['/about']" (click)="closeBurger()">Про нас</a>
       </div>
       <div class="burgerMenuWrapperBottom">
-        <a [routerLink]="['/login']" class="margin">Увійти</a>
-        <a [routerLink]="['/liked']">Обране</a>
+        <a [routerLink]="['/login']" class="margin" (click)="closeBurger()">Увійти</a>
+        <a [routerLink]="['/liked']" (click)="closeBurger()">Обране</a>
       </div>
     </div>
   </div>
