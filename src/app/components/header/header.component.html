@@ -15,12 +15,12 @@
       </div>
       <div class="menuWrapperRight">
         <div class="menuInnerWrapper">
-          <a href="#" class="search">
+          <a href="#" class="search" (mouseover)="addHeaderColor()">
             <i class="uil uil-search"></i>
           </a>
-          <a [routerLink]="['/login']" class="margin">Увійти</a>
-          <a [routerLink]="['/liked']">Обране</a>
-          <a [routerLink]="['/basket']" class="basket"><i class="uil uil-shopping-bag"></i></a>
+          <a [routerLink]="['/login']" class="margin" (mouseover)="addHeaderColor()">Увійти</a>
+          <a [routerLink]="['/liked']" (mouseover)="addHeaderColor()">Обране</a>
+          <a [routerLink]="['/basket']" class="basket" (mouseover)="addHeaderColor()"><i class="uil uil-shopping-bag"></i></a>
         </div>
       </div>
 

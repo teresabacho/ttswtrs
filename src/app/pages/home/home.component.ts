@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
+  public otherHeader: boolean = false;
+
   constructor() { }
 
   ngOnInit(): void {
+    this.otherHeader = true;
   }
 
   openBurgerMenu():void{

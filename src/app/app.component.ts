@@ -9,6 +9,8 @@ export class AppComponent {
   title = 'ttswtrs';
 
   closeCollections(): void {
+    document.querySelector("header")?.classList.remove("bgc");
+
     document.querySelector(".fallContainer")?.classList.add("displayNone");
   }
 }

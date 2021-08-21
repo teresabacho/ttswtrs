@@ -41,7 +41,10 @@ export class HeaderComponent implements OnInit {
     this.opened = false;
   }
 
+
   openCollections(): void {
+    document.querySelector("header")?.classList.add("bgc");
+
     document.querySelector(".fallContainer")?.classList.remove("displayNone");
 
     document.querySelector(".fallContainerCollCat")?.classList.remove("displayNone");
@@ -51,12 +54,16 @@ export class HeaderComponent implements OnInit {
   }
 
   closeCollections(): void {
+    document.querySelector("header")?.classList.remove("bgc");
+
     document.querySelector(".fallContainer")?.classList.add("displayNone");
   }
 
 
 
   openExplore(): void {
+    document.querySelector("header")?.classList.add("bgc");
+
     document.querySelector(".fallContainer")?.classList.remove("displayNone");
     document.querySelector(".fallContainerCollCat")?.classList.add("displayNone");
     document.querySelector(".fallContainerCollCat")?.classList.remove("displayFlex");
@@ -66,8 +73,11 @@ export class HeaderComponent implements OnInit {
 
   closeExplore(): void {
     document.querySelector(".fallContainer")?.classList.add("displayNone");
+    document.querySelector("header")?.classList.remove("bgc");
   }
 
-
+  addHeaderColor(): void{
+    document.querySelector("header")?.classList.add("bgc");
+  }
 
 }
