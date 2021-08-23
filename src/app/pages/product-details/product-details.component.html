@@ -1,1 +1,111 @@
-<p>product-details works!</p>
+<div class="products-detailsContainer">
+
+  <div class="bigWrapper">
+
+    <div class="imagesContainer" (click)="moreDetailsClose()">
+      <div class="imagesContainerWrapper">
+        <ul>
+          <li>
+            <img src="assets/images/ttswtrs_c3cd6518-c69f-41da-80ce-68dc6a88949c_1600x.jpg" alt="">
+          </li>
+          <li>
+            <img src="assets/images/ttswtrs_2_1600x.jpg" alt="">
+          </li>
+          <li>
+            <img src="assets/images/f4a6f891a26fa4edacccbf95d4c1d5e9_1600x.jpg" alt="">
+          </li>
+        </ul>
+
+        <div class="heartContainer">
+        <span>
+          <button type="button">
+          <i class="uil uil-heart-alt"></i>
+        </button>
+        </span>
+        </div>
+
+        <div class="pointsContainer">
+          <div>
+            <li class="notActive"></li>
+            <li class="active"></li>
+            <li class="notActive"></li>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="detailsContainer">
+
+      <div class="detailsContainerWrapper">
+        <div class="detailsContainerTop">
+          <h1>Name</h1>
+          <h2>FW21-BL-D003-W_{{1}}</h2>
+          <div class="sizeContainer">
+            <div>
+              <h4>Size</h4>
+            </div>
+            <ul>
+              <li>
+                <a href="#" class="inStock">S</a>
+              </li>
+              <li>
+                <a href="#" class="inStock">M</a>
+              </li>
+            </ul>
+          </div>
+          <button id="addToBasketBtn" disabled>
+            <span class="buttonBuyPrice visible displayFlex">
+              <span>
+                <i class="uil uil-shopping-bag"></i>
+                ADD
+              </span>
+              <span>200 USD</span>
+            </span>
+
+<!--            <span class="selectASize hidden displayNone">SELECT A SIZE</span>-->
+          </button>
+        </div>
+
+        <div class="detailsContainerBottom">
+          <a class="moreDetails" (click)="moreDetailsOpen()">
+            <span>More details</span>
+          </a>
+        </div>
+
+        <aside class="displayNone">
+          <div class="asideWrapper">
+            <div class="moreDetailsContainer">
+              <h1>Name</h1>
+              <div class="composition">
+                <h4>Composition:</h4>
+                <p>95% silk</p>
+                <p>5% elastane</p>
+              </div>
+              <div class="aboutModel">
+                <p>
+                  The model is {{178}} cm tall and wears a size {{34}}
+                </p>
+              </div>
+              <div class="care">
+                <h4>Care:</h4>
+                <p>Do not send</p>
+                <p>Do not bleach</p>
+                <p>Dry dry cleaning</p>
+                <p>Iron 110°</p>
+                <p>Do not dry in the washing machine</p>
+              </div>
+            </div>
+          </div>
+
+
+        </aside>
+
+        <div class="grey displayNone" (click)="moreDetailsClose()"></div>
+      </div>
+
+    </div>
+
+
+  </div>
+</div>

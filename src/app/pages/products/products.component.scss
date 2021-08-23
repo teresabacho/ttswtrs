@@ -43,6 +43,11 @@
   z-index: 1;
   text-align: end;
   @include text($primaryFont, 18px);
+
+  button{
+    background-color: transparent;
+    border: 0;
+  }
 }
 
 .descriptionImg {

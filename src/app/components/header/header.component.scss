@@ -52,12 +52,26 @@ a {
   a {
     display: inline-block;
     width: 120px;
+    position: relative;
   }
 
   .logo {
     @include text($logoFont, 22px);
     padding-left: 40px;
     width: 280px;
+  }
+
+
+
+  .shop:after{
+    content: "一 Top";
+    display: block;
+    position: absolute;
+    top: 2px;
+    left: 40px;
+    width: 70px;
+    background-color: $lightColor;
+    @include text($primaryFont, 10px, 500, $sideColor);
   }
 }
 
