@@ -156,5 +156,11 @@
     }
   }
 
+  .visible {
+    .descriptionContainerTop, .descriptionContainerBottom {
+      opacity: 0;
+    }
+  }
+
 
 }

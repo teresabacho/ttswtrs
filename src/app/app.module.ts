@@ -10,7 +10,7 @@ import { AboutComponent } from './pages/about/about.component';
 import { VipComponent } from './pages/vip/vip.component';
 import { BasketComponent } from './pages/basket/basket.component';
 import { LoginComponent } from './pages/login/login.component';
-import { LikedComponent } from './pages/liked/liked.component';
+import { FavoritesComponent } from './pages/favorites/favorites.component';
 import { ProductsComponent } from './pages/products/products.component';
 import { ProductDetailsComponent } from './pages/product-details/product-details.component';
 import { ShipmentAndReturnComponent } from './pages/shipment-and-return/shipment-and-return.component';
@@ -28,7 +28,7 @@ import { ContactsComponent } from './pages/contacts/contacts.component';
     VipComponent,
     BasketComponent,
     LoginComponent,
-    LikedComponent,
+    FavoritesComponent,
     ProductsComponent,
     ProductDetailsComponent,
     ShipmentAndReturnComponent,

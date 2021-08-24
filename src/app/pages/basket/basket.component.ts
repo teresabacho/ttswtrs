@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-basket',
@@ -7,9 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BasketComponent implements OnInit {
 
-  constructor() { }
+  public empty: boolean = false;
+
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
+
 
 }
