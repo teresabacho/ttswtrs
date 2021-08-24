@@ -8,6 +8,11 @@ footer{
   align-items: center;
   flex-direction: column;
   width: 100%;
+
+  @media screen and (max-width: 500px) {
+    height: 100%;
+  }
+
   .top{
     margin-top: 15px;
     width: 100%;
@@ -15,37 +20,50 @@ footer{
     justify-content: center;
     .logo {
       @include text($logoFont, 22px);
-      padding-left: 3vw;
       text-decoration: none;
     }
   }
+
   .mid{
     margin-top: 10px;
     width: 80%;
     display: flex;
     justify-content: space-around;
-    span{
-      height: 1px;
-      width: 200px;
-      background-color: black;
+    @media screen and (max-width: 500px) {
+      flex-direction: column;
+      align-items: center;
     }
 
     .title{
       @include text($primaryFont, 18px);
       margin-bottom: 3px;
     }
+
+    span{
+      height: 1px;
+      width: 200px;
+      background-color: black;
+    }
+
     .midRight{
       width: 40%;
       display: flex;
       align-items: center;
       flex-direction: column;
+      @media screen and (max-width: 500px) {
+        margin-top: 15px;
+      }
 
       .list{
         margin-top: 20px;
+        @media screen and (max-width: 500px) {
+          width: 200px;
+          text-align: center;
+        }
 
         div{
           margin-bottom: 4px;
-          @include text($primaryFont, 15px,$primaryColor);
+          @include text($primaryFont, 14px,$primaryColor);
         }
       }
     }
@@ -54,6 +72,10 @@ footer{
       display: flex;
       align-items: center;
       flex-direction: column;
+
+      @media screen and (max-width: 500px) {
+        margin-top: 15px;
+      }
       .mail{
         width: 200px;
         height: 30px;
@@ -66,7 +88,7 @@ footer{
         width: 200px;
         height: 30px;
         background-color: $primaryColor;
-        @include text($primaryFont, 18px);
+        @include text($primaryFont, 14px);
         border: 0.5px $primaryColor solid;
         color: #fffaf8;
       }
@@ -90,3 +112,25 @@ footer{
   }
 }
 
+
+.search {
+  display: inline-block;
+  text-align: start;
+  appearance: auto;
+  @include text($primaryFont, 14px);
+  line-height: 2rem;
+  letter-spacing: 0.035em;
+  border: none;
+  border-bottom: 1px solid #2d2d2d;
+  background: transparent;
+  padding: 1vh 0;
+  width: 200px;
+  height: 30px;
+  margin-top: 20px;
+}
+.search:focus {
+  outline: none;
+}
+.search::placeholder {
+  @include text($primaryFont, 14px);
+}
