@@ -1,55 +1,22 @@
 @import "src/app/shared/styles/variables";
 @import "src/app/shared/styles/mixins";
 
+.secondContainer{
 
-.favContainer {
-  width: 100%;
-  min-height: 80vh;
-  background-color: $lightColor;
 }
 
-.favContainerTop {
-  width: 100%;
-  padding: 15vh 40px 0;
-  background-color: $lightColor;
+.secondProductsContainer{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
 
-  h6 {
-    margin-top: 5vh;
-    @include text($primaryFont, 14px);
-  }
+  margin-top: 20px;
 }
-
-.favContainerTopWrapper {
-  width: 100%;
-  height: 8vh;
-  position: relative;
-
-  h1 {
-    @include text($boldPrimaryFont, 20px);
-
-  }
-}
-
-.favContainerTopWrapper:after {
-  content: "";
-  display: block;
-  position: absolute;
-  width: 100%;
-  height: 2px;
-  background-color: $primaryColor;
-  bottom: 0;
-  left: 0;
-}
-
-.favProductsContainer{
-  padding-bottom: 40px;
-}
-
 
 
 .prodContainer {
   width: 25%;
-  margin: 40px 40px 0;
 }
 
 .descriptionForSm{
@@ -160,4 +127,38 @@
 
 .displayFlex {
   display: flex;
+}
+
+
+@media screen and (max-width: 900px) {
+  .prodContainer {
+    width: 50%;
+  }
+
+  .descriptionForSm{
+    display: flex;
+    width: 100%;
+    padding: 2vh 2vw;
+
+    div{
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+
+      h3{
+        margin-bottom: 1vh;
+      }
+    }
+  }
+
+  .visible {
+    .descriptionContainerTop, .descriptionContainerBottom {
+      opacity: 0;
+    }
+  }
+
+  .padding40{
+    padding: 0 10px;
+  }
 }

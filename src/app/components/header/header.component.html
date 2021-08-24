@@ -21,7 +21,7 @@
             <i class="uil uil-search"></i>
           </a>
           <a [routerLink]="['/login']" class="margin" (mouseover)="addHeaderColor()">Login</a>
-          <a [routerLink]="['/liked']" (mouseover)="addHeaderColor()">Fav</a>
+          <a [routerLink]="['/favorites']" (mouseover)="addHeaderColor()">Fav</a>
           <a [routerLink]="['/basket']" class="basket" (mouseover)="addHeaderColor()"><i
             class="uil uil-shopping-bag"></i></a>
         </div>
@@ -59,14 +59,14 @@
     <!--    <div class="exploreContainer displayNone" (mouseout)="closeExplore()">-->
     <!--      <div class="collectionsContainer" (mouseout)="closeCollections()">-->
     <!--        <span>Collections</span>-->
-    <!--        <a [routerLink]="['/liked']">FW 21</a>-->
-    <!--        <a [routerLink]="['/liked']">SS 21</a>-->
+    <!--        <a [routerLink]="['/favorites']">FW 21</a>-->
+    <!--        <a [routerLink]="['/favorites']">SS 21</a>-->
     <!--      </div>-->
     <!--      <div class="categoriesContainer">-->
     <!--        <span>Categories</span>-->
-    <!--        <a [routerLink]="['/liked']">Accessories</a>-->
-    <!--        <a [routerLink]="['/liked']">Top</a>-->
-    <!--        <a [routerLink]="['/liked']">Dress</a>-->
+    <!--        <a [routerLink]="['/favorites']">Accessories</a>-->
+    <!--        <a [routerLink]="['/favorites']">Top</a>-->
+    <!--        <a [routerLink]="['/favorites']">Dress</a>-->
     <!--      </div>-->
     <!--    </div>-->
 
@@ -78,7 +78,7 @@
       <div class="menuWrapperLeft">
         <div class="menuInnerWrapper">
           <div class="logoWrapper">
-            <a [routerLink]="['/']" class="logo">TTSWTRS</a>
+            <a [routerLink]="['/']" class="logo" (click)="closeBurger()">TTSWTRS</a>
           </div>
 
           <div class="backButton displayNone" (click)="back()">
@@ -89,12 +89,12 @@
       </div>
       <div class="menuWrapperRight">
         <div class="menuInnerWrapper">
-          <a [routerLink]="['/basket']" class="basket" (click)="closeBurger()"><i class="uil uil-shopping-bag"></i></a>
+          <a [routerLink]="['/basket']" class="basket" (click)="closeBurger()">
+            <i class="uil uil-shopping-bag"></i>
+          </a>
 
           <div class="burgerMenuButtonWrapper" (click)="openBurger()">
-<!--            <div class="burgerMenuButton burgerMenuButtonClosed">-->
-              <i class="burgerMenuButton uil uil-bars"></i>
-<!--            </div>-->
+            <i class="burgerMenuButton uil uil-bars"></i>
           </div>
         </div>
       </div>
@@ -128,8 +128,8 @@
           </div>
 
           <div class="exploreBox displayNone">
-            <a [routerLink]="['/vip']" (click)="closeCollections()">VIP</a>
-            <a [routerLink]="['/about']" (click)="closeCollections()">About us</a>
+            <a [routerLink]="['/vip']" (click)="closeBurger()">VIP</a>
+            <a [routerLink]="['/about']" (click)="closeBurger()">About us</a>
           </div>
 
         </div>
@@ -138,7 +138,7 @@
       </div>
       <div class="burgerMenuWrapperBottom">
         <a [routerLink]="['/login']" class="margin" (click)="closeBurger()">Login</a>
-        <a [routerLink]="['/liked']" (click)="closeBurger()">Fav</a>
+        <a [routerLink]="['/favorites']" (click)="closeBurger()">Fav</a>
       </div>
     </div>
   </div>

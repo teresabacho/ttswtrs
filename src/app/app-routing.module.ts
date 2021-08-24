@@ -7,7 +7,7 @@ import {ProductDetailsComponent} from "./pages/product-details/product-details.c
 import {VipComponent} from "./pages/vip/vip.component";
 import {AboutComponent} from "./pages/about/about.component";
 
-import {LikedComponent} from "./pages/liked/liked.component";
+import {FavoritesComponent} from "./pages/favorites/favorites.component";
 import {LoginComponent} from "./pages/login/login.component";
 import {BasketComponent} from "./pages/basket/basket.component";
 
@@ -23,7 +23,7 @@ const routes: Routes = [
   {path: 'products/:category/:id', component: ProductDetailsComponent},
   {path: 'vip', component: VipComponent},
   {path: 'about', component: AboutComponent},
-  {path: 'liked', component: LikedComponent},
+  {path: 'favorites', component: FavoritesComponent},
   {path: 'login', component: LoginComponent},
   {path: 'basket', component: BasketComponent},
 
