@@ -12,4 +12,15 @@ export class LikedComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  showDescription(id: number): void {
+    document.getElementById(`${id}`)?.classList.remove("hidden");
+    document.getElementById(`${id}`)?.classList.add("visible");
+  }
+
+
+  hideDescription(id: number): void {
+    document.getElementById(`${id}`)?.classList.add("hidden");
+    document.getElementById(`${id}`)?.classList.remove("visible");
+  }
+
 }

@@ -1,0 +1,160 @@
+@import "src/app/shared/styles/variables";
+@import "src/app/shared/styles/mixins";
+
+
+.productsContainer {
+  width: 100%;
+  min-height: 100vh;
+  background-color: $lightColor;
+  padding-top: 10vh;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+
+  //opacity: 1;
+  //transform: none;
+}
+
+
+.prodContainer {
+  width: 25%;
+}
+
+.descriptionForSm{
+  display: none;
+}
+
+.descriptionContainer {
+  width: 100%;
+  background-color: $lightColor;
+  position: relative;
+  top: 0;
+}
+
+
+.descriptionContainerTop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 20px;
+  z-index: 1;
+  text-align: end;
+  @include text($primaryFont, 18px);
+
+  button {
+    background-color: transparent;
+    border: 0;
+  }
+}
+
+.descriptionImg {
+  position: relative;
+  background: #fff;
+
+  img {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
+.descriptionImg:before {
+  content: '';
+  display: block;
+  padding-top: 133.33333333333331%;
+}
+
+.descriptionContainerBottom {
+  padding: 20px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+
+.namePriceCont {
+  width: 100%;
+  //background-color: #e27f7f;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  h3 {
+    @include text($boldPrimaryFont, 14px);
+  }
+
+  h4 {
+    @include text($primaryFont, 14px);
+  }
+}
+
+.sizeCont {
+  width: 100%;
+  //background-color: #5589d5;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+
+  span {
+    margin: 5px 10px 0 0;
+    @include text($primaryFont, 12px);
+  }
+}
+
+
+.hidden {
+  .descriptionContainerTop, .descriptionContainerBottom {
+    opacity: 0;
+  }
+}
+
+.visible {
+  .descriptionContainerTop, .descriptionContainerBottom {
+    transition: opacity 0.6s cubic-bezier(0.25, 0.1, 0.25, 1) 0s;
+  }
+}
+
+
+.displayNone {
+  display: none;
+}
+
+.displayFlex {
+  display: flex;
+}
+
+
+@media screen and (max-width: $screen-md-max + 'px') {
+  .prodContainer {
+    width: 50%;
+  }
+
+  .descriptionForSm{
+    display: flex;
+    width: 100%;
+    padding: 2vh 2vw;
+
+    div{
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+
+      h3{
+        margin-bottom: 1vh;
+      }
+    }
+  }
+
+
+}

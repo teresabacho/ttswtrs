@@ -4,20 +4,25 @@
 header {
   width: 100%;
   height: 10vh;
-  background-color: $lightColor;
+  //background-color: $lightColor;
+  position: fixed;
+  z-index: 93849498;
 
-  @media screen and (min-width: 1441px) {
-    height: 5vh;
-  }
 
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
+
+  .menuMain {
+    width: 100%;
+    height: 10vh;
+    position: relative;
+  }
 
   .menuContainer {
     width: 100%;
-    margin-top: 2vh;
+    margin-top: 3vh;
     //background-color: rgba(255, 248, 242, 0);
     display: flex;
     flex-direction: row;
@@ -29,6 +34,12 @@ header {
   }
 }
 
+a {
+  position: relative;
+  text-decoration: none;
+  @include text($primaryFont, 14px);
+}
+
 
 .menuWrapperLeft {
   width: 70%;
@@ -36,6 +47,30 @@ header {
   flex-direction: row;
   justify-content: start;
   align-items: baseline;
+
+  a {
+    display: inline-block;
+    width: 120px;
+    position: relative;
+  }
+
+  .logo {
+    @include text($logoFont, 22px);
+    padding-left: 40px;
+    width: 280px;
+  }
+
+
+  .shop:after {
+    content: "一 Top";
+    display: block;
+    position: absolute;
+    top: 2px;
+    left: 40px;
+    width: 70px;
+    //background-color: $lightColor;
+    @include text($primaryFont, 10px, 500, $sideColor);
+  }
 }
 
 .menuWrapperRight {
@@ -47,18 +82,14 @@ header {
     flex-direction: row;
     justify-content: flex-end;
   }
+
+  a {
+    margin: 0 10px;
+  }
 }
 
-.logo {
-  @include text($logoFont, 22px);
-  padding-left: 3vw;
-}
-
-a {
-  position: relative;
-  margin: 0 10px;
-  text-decoration: none;
-  @include text($primaryFont, 14px);
+.basket, .search {
+  width: 14px;
 }
 
 .basket:before {
@@ -74,7 +105,66 @@ a {
 }
 
 
-@media screen and (max-width: 880px) {
+.fallContainer {
+  width: 100%;
+  padding-left: 280px;
+  padding-bottom: 20px;
+  background-color: $lightColor;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  @include text($primaryFont, 14px);
+
+  .fallContainerCollCat {
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-top: 20px;
+  }
+
+  .exploreContainer {
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-top: 20px;
+  }
+
+  a {
+    display: inline-block;
+    width: 120px;
+    margin-top: 10px;
+    color: $primaryColor;
+  }
+
+  //span {
+  //  display: inline-block;
+  //  width: 100px;
+  //  margin: 20px 0 0 0;
+  //  @include text($primaryFont, 14px, $sideColor);
+  //  color: $sideColor;
+  //  //letter-spacing: 1.1px;
+  //}
+}
+
+.collectionsContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.categoriesContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  height: 15vh;
+}
+
+
+@media screen and(max-width: $screen-md-max+px) {
   header {
     .menuContainer {
       display: none;
@@ -97,45 +187,47 @@ a {
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
-
-
-        //.menuWrapperLeft {
-        //
-        //  background-color: #3d998e;
-        //}
-
+        position: sticky;
+        z-index: 33;
 
         .menuWrapperRight {
           display: flex;
           flex-direction: row;
           justify-content: flex-end;
-          align-items: baseline;
+          align-items: center;
 
           .menuInnerWrapper {
             padding-right: 3vw;
-            align-items: baseline;
+            //align-items: baseline;
             //background-color: $sdPrimaryColor;
+            a {
+              width: 14px;
+              height: 14px;
+              @include text($primaryFont, 14px);
 
-            .burgerMenuButton {
-              width: 12px;
-              height: 1px;
-              border-radius: 10px;
-              background-color: $primaryColor;
-              position: relative;
+              i{
+                width: 14px;
+                height: 14px;
+                @include text($primaryFont, 14px);
+              }
+            }
+
+            .burgerMenuButtonWrapper {
+              width: 14px;
+              height: 14px;
               margin-left: 2vw;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+
+
+              i {
+                width: 14px;
+                height: 14px;
+                @include text($primaryFont, 14px);
+              }
             }
 
-            .burgerMenuButton:before {
-              content: "";
-              display: block;
-              position: absolute;
-              width: 120%;
-              height: 1px;
-              border-radius: 10px;
-              background-color: $primaryColor;
-              top: -4px;
-              left: 0;
-            }
 
           }
         }
@@ -146,15 +238,15 @@ a {
         //display: flex;
 
         width: 100vw;
-        height: 90vh;
+        height: 100vh;
         padding: 2vh 5vh;
         @include text($primaryFont, 20px);
         background-color: $lightColor;
         position: absolute;
-        top: 10vh;
+        top: 0;
         flex-direction: column;
         align-items: start;
-        justify-content: space-around;
+        justify-content: flex-start;
 
         .burgerMenuWrapperTop {
           display: flex;
@@ -165,6 +257,7 @@ a {
             width: 100%;
             position: relative;
             margin-bottom: 3vh;
+            margin-top: 20vh;
           }
 
           .inputBox:after {
@@ -204,16 +297,16 @@ a {
           }
 
 
-
           a {
             margin: 2vh 0;
             @include text($primaryFont, 18px);
           }
         }
 
-        .burgerMenuWrapperBottom{
+        .burgerMenuWrapperBottom {
 
-          a{
+
+          a {
             margin: 0 3vh 0 0;
           }
         }
@@ -222,13 +315,64 @@ a {
   }
 }
 
-.displayNone{
+.linksWrapper {
+  width: 100%;
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  position: relative;
+}
+
+.linksBox {
+  width: 100%;
+  //display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.collectionsCategoriesBox, .exploreBox {
+  width: 100%;
+  //padding-top: 2vh;
+  //display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.left, .right {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+.exploreBox {
+  flex-direction: column;
+}
+
+.backButton {
+  width: 15px;
+  height: 15px;
+  padding-left: 5vh;
+
+  i {
+    font-size: 20px;
+  }
+}
+
+
+.displayNone {
   display: none;
 }
 
-.displayFlex{
+.displayFlex {
   display: flex;
 }
+
+.bgc {
+  background-color: $lightColor;
+}
+
 
 
 

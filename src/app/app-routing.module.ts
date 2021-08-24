@@ -20,7 +20,7 @@ import {ContactsComponent} from "./pages/contacts/contacts.component";
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'products/:category', component: ProductsComponent},
-  {path: 'products/:category/:name', component: ProductDetailsComponent},
+  {path: 'products/:category/:id', component: ProductDetailsComponent},
   {path: 'vip', component: VipComponent},
   {path: 'about', component: AboutComponent},
   {path: 'liked', component: LikedComponent},

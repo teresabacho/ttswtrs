@@ -1,8 +1,8 @@
 <app-header></app-header>
 
-<main>
+<main (mouseover)="closeCollections()">
   <router-outlet></router-outlet>
 </main>
 
-<app-footer></app-footer>
+<app-footer (mouseover)="closeCollections()"></app-footer>
 
