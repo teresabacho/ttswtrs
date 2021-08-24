@@ -9,7 +9,6 @@ header {
   z-index: 93849498;
 
 
-
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -62,15 +61,14 @@ a {
   }
 
 
-
-  .shop:after{
+  .shop:after {
     content: "一 Top";
     display: block;
     position: absolute;
     top: 2px;
     left: 40px;
     width: 70px;
-    background-color: $lightColor;
+    //background-color: $lightColor;
     @include text($primaryFont, 10px, 500, $sideColor);
   }
 }
@@ -189,69 +187,47 @@ a {
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
-
-
-        //.menuWrapperLeft {
-        //
-        //  background-color: #3d998e;
-        //}
-
+        position: sticky;
+        z-index: 33;
 
         .menuWrapperRight {
           display: flex;
           flex-direction: row;
           justify-content: flex-end;
-          align-items: baseline;
+          align-items: center;
 
           .menuInnerWrapper {
             padding-right: 3vw;
-            align-items: baseline;
+            //align-items: baseline;
             //background-color: $sdPrimaryColor;
+            a {
+              width: 14px;
+              height: 14px;
+              @include text($primaryFont, 14px);
 
-            .burgerMenuButtonClosed {
-              width: 13px;
-              height: 1px;
-              border-radius: 10px;
-              background-color: $primaryColor;
-              position: relative;
+              i{
+                width: 14px;
+                height: 14px;
+                @include text($primaryFont, 14px);
+              }
+            }
+
+            .burgerMenuButtonWrapper {
+              width: 14px;
+              height: 14px;
               margin-left: 2vw;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+
+
+              i {
+                width: 14px;
+                height: 14px;
+                @include text($primaryFont, 14px);
+              }
             }
 
-            .burgerMenuButtonOpened {
-              width: 15px;
-              height: 1px;
-              border-radius: 10px;
-              background-color: $primaryColor;
-              position: relative;
-              margin-left: 2vw;
-              //transform: rotateX(45deg);
-              transform: rotate(45deg) translate(-2px, -1px);
-            }
-
-            .burgerMenuButtonClosed:before {
-              content: "";
-              display: block;
-              position: absolute;
-              width: 15px;
-              height: 1px;
-              border-radius: 10px;
-              background-color: $primaryColor;
-              top: -4px;
-              left: 0;
-            }
-
-            .burgerMenuButtonOpened:before {
-              content: "";
-              display: block;
-              position: absolute;
-              width: 100%;
-              height: 1px;
-              border-radius: 10px;
-              background-color: $primaryColor;
-              top: -4px;
-              left: 0;
-              transform: rotate(90deg) translate(4px, 0px);
-            }
 
           }
         }
@@ -262,15 +238,15 @@ a {
         //display: flex;
 
         width: 100vw;
-        height: 90vh;
+        height: 100vh;
         padding: 2vh 5vh;
         @include text($primaryFont, 20px);
         background-color: $lightColor;
         position: absolute;
-        top: 10vh;
+        top: 0;
         flex-direction: column;
         align-items: start;
-        justify-content: space-around;
+        justify-content: flex-start;
 
         .burgerMenuWrapperTop {
           display: flex;
@@ -281,6 +257,7 @@ a {
             width: 100%;
             position: relative;
             margin-bottom: 3vh;
+            margin-top: 20vh;
           }
 
           .inputBox:after {
@@ -328,12 +305,58 @@ a {
 
         .burgerMenuWrapperBottom {
 
+
           a {
             margin: 0 3vh 0 0;
           }
         }
       }
     }
+  }
+}
+
+.linksWrapper {
+  width: 100%;
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  position: relative;
+}
+
+.linksBox {
+  width: 100%;
+  //display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.collectionsCategoriesBox, .exploreBox {
+  width: 100%;
+  //padding-top: 2vh;
+  //display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.left, .right {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+.exploreBox {
+  flex-direction: column;
+}
+
+.backButton {
+  width: 15px;
+  height: 15px;
+  padding-left: 5vh;
+
+  i {
+    font-size: 20px;
   }
 }
 

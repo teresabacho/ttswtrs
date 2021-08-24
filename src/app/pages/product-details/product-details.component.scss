@@ -16,6 +16,10 @@
   width: 100%;
 }
 
+.bigWrapperForSm {
+  display: none;
+}
+
 .imagesContainer {
   width: 55vw;
   height: initial;
@@ -359,4 +363,155 @@ aside {
 //  transform: translateX(0%);
 //}
 
+
+@media screen and (max-width: 900px) {
+  .bigWrapper {
+    display: none;
+  }
+
+  .bigWrapperForSm {
+    display: flex;
+    width: 100%;
+  }
+
+  .smallerContainer {
+    width: 100%;
+    background: $lightColor;
+  }
+
+
+  .smContainer {
+
+
+  }
+
+  .contentContainerSm {
+    position: sticky;
+    width: 100%;
+  }
+
+
+  .buttonContainer {
+    border-top: 1px solid $sideColor;
+    position: sticky;
+    width: 100%;
+    right: 0;
+    bottom: 0;
+    height: 15vh;
+    z-index: 301;
+    background-color: $lightColor;
+    padding: 2vh 5vw;
+
+    button {
+      background-color: $primaryColor;
+      @include text($primaryFont, 14px, 500, $lightColor);
+      text-transform: uppercase;
+      height: 7vh;
+      border: solid 1px $primaryColor;
+      cursor: pointer;
+      border-radius: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      transition: background 0.3s cubic-bezier(0.25, 0.1, 0.25, 1) 0s, color 0.3s cubic-bezier(0.25, 0.1, 0.25, 1) 0s, border-color 0.3s cubic-bezier(0.25, 0.1, 0.25, 1) 0s;
+      width: 100%;
+      padding: 0 2rem;
+    }
+
+    button:disabled {
+      background-color: transparent;
+      @include text($primaryFont, 14px, 500, $primaryColor);
+      opacity: 0.9;
+    }
+  }
+
+  .mainImgContainer {
+    width: 100%;
+    min-height: 50vh;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .detailsContainerSm {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5vh 0;
+  }
+
+  .detailsContainerSmWrapper {
+    width: 70%;
+    text-align: center;
+
+    h1 {
+      @include text($boldPrimaryFont, 20px);
+      margin-bottom: 3vh;
+    }
+
+    h2 {
+      @include text($boldPrimaryFont, 14px);
+      margin-bottom: 8vh;
+    }
+  }
+
+  .detailsContainerBottom {
+    a {
+      cursor: default;
+      span:after {
+        transform: scaleX(1);
+      }
+    }
+  }
+
+
+  .sizeContainerSm {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 1vh;
+
+    h4 {
+      @include text($primaryFont, 18px);
+      margin-right: 5vw;
+    }
+
+    ul {
+      list-style-type: none;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+
+      li {
+        margin: 0 1vw;
+
+        a {
+          @include text($primaryFont, 14px);
+          text-decoration: none;
+        }
+      }
+    }
+  }
+
+  .moreDetailsWrapper {
+    display: flex;
+    justify-content: center;
+    padding-top: 3vh;
+  }
+
+  .otherPhotosContainer{
+    width: 100%;
+
+    img{
+      width: 100%;
+    }
+  }
+
+
+}
 

@@ -17,13 +17,13 @@
   //transform: none;
 }
 
-//.productsContainer > * {
-//  pointer-events: auto;
-//}
-
 
 .prodContainer {
   width: 25%;
+}
+
+.descriptionForSm{
+  display: none;
 }
 
 .descriptionContainer {
@@ -44,7 +44,7 @@
   text-align: end;
   @include text($primaryFont, 18px);
 
-  button{
+  button {
     background-color: transparent;
     border: 0;
   }
@@ -131,4 +131,30 @@
 
 .displayFlex {
   display: flex;
+}
+
+
+@media screen and (max-width: $screen-md-max + 'px') {
+  .prodContainer {
+    width: 50%;
+  }
+
+  .descriptionForSm{
+    display: flex;
+    width: 100%;
+    padding: 2vh 2vw;
+
+    div{
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+
+      h3{
+        margin-bottom: 1vh;
+      }
+    }
+  }
+
+
 }

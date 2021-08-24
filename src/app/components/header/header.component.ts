@@ -7,6 +7,7 @@ import {Component, OnInit} from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   private opened: boolean = false;
+  private extendBurgerOpened: boolean = false;
 
   constructor() {
   }
@@ -19,15 +20,25 @@ export class HeaderComponent implements OnInit {
       document.querySelector(".burgerMenuBottom")?.classList.remove("displayNone");
       document.querySelector(".burgerMenuBottom")?.classList.add("displayFlex");
 
-      document.querySelector(".burgerMenuButton")?.classList.remove("burgerMenuButtonClosed");
-      document.querySelector(".burgerMenuButton")?.classList.add("burgerMenuButtonOpened");
+      document.querySelector(".burgerMenuButton")?.classList.remove("uil-bars");
+      document.querySelector(".burgerMenuButton")?.classList.add("uil-multiply");
       this.opened = true;
     } else {
       document.querySelector(".burgerMenuBottom")?.classList.remove("displayFlex");
       document.querySelector(".burgerMenuBottom")?.classList.add("displayNone");
 
-      document.querySelector(".burgerMenuButton")?.classList.remove("burgerMenuButtonOpened");
-      document.querySelector(".burgerMenuButton")?.classList.add("burgerMenuButtonClosed");
+      document.querySelector(".burgerMenuButton")?.classList.remove("uil-multiply");
+      document.querySelector(".burgerMenuButton")?.classList.add("uil-bars");
+
+      document.querySelector(".linksBox")?.classList.add("displayFlex");
+      document.querySelector(".linksBox")?.classList.remove("displayNone");
+      document.querySelector(".collectionsCategoriesBox")?.classList.add("displayNone");
+      document.querySelector(".collectionsCategoriesBox")?.classList.remove("displayFlex");
+      document.querySelector(".exploreBox")?.classList.add("displayNone");
+      document.querySelector(".exploreBox")?.classList.remove("displayFlex");
+      document.querySelector(".logoWrapper")?.classList.remove("displayNone");
+      document.querySelector(".backButton")?.classList.add("displayNone");
+
       this.opened = false;
     }
   }
@@ -36,9 +47,18 @@ export class HeaderComponent implements OnInit {
     document.querySelector(".burgerMenuBottom")?.classList.remove("displayFlex");
     document.querySelector(".burgerMenuBottom")?.classList.add("displayNone");
 
-    document.querySelector(".burgerMenuButton")?.classList.remove("burgerMenuButtonOpened");
-    document.querySelector(".burgerMenuButton")?.classList.add("burgerMenuButtonClosed");
+    document.querySelector(".burgerMenuButton")?.classList.remove("uil-multiply");
+    document.querySelector(".burgerMenuButton")?.classList.add("uil-bars");
     this.opened = false;
+
+    document.querySelector(".linksBox")?.classList.add("displayFlex");
+    document.querySelector(".linksBox")?.classList.remove("displayNone");
+    document.querySelector(".collectionsCategoriesBox")?.classList.add("displayNone");
+    document.querySelector(".collectionsCategoriesBox")?.classList.remove("displayFlex");
+    document.querySelector(".exploreBox")?.classList.add("displayNone");
+    document.querySelector(".exploreBox")?.classList.remove("displayFlex");
+    document.querySelector(".logoWrapper")?.classList.remove("displayNone");
+    document.querySelector(".backButton")?.classList.add("displayNone");
   }
 
 
@@ -60,7 +80,6 @@ export class HeaderComponent implements OnInit {
   }
 
 
-
   openExplore(): void {
     document.querySelector("header")?.classList.add("bgc");
 
@@ -76,8 +95,40 @@ export class HeaderComponent implements OnInit {
     document.querySelector("header")?.classList.remove("bgc");
   }
 
-  addHeaderColor(): void{
+  addHeaderColor(): void {
     document.querySelector("header")?.classList.add("bgc");
+  }
+
+
+  openCollectionsBurger(): void {
+    document.querySelector(".collectionsCategoriesBox")?.classList.remove("displayNone");
+    document.querySelector(".collectionsCategoriesBox")?.classList.add("displayFlex");
+    document.querySelector(".linksBox")?.classList.remove("displayFlex");
+    document.querySelector(".linksBox")?.classList.add("displayNone");
+
+    document.querySelector(".logoWrapper")?.classList.add("displayNone");
+    document.querySelector(".backButton")?.classList.remove("displayNone");
+  }
+
+  openExploreBurger():void{
+    document.querySelector(".exploreBox")?.classList.remove("displayNone");
+    document.querySelector(".exploreBox")?.classList.add("displayFlex");
+    document.querySelector(".linksBox")?.classList.remove("displayFlex");
+    document.querySelector(".linksBox")?.classList.add("displayNone");
+
+    document.querySelector(".logoWrapper")?.classList.add("displayNone");
+    document.querySelector(".backButton")?.classList.remove("displayNone");
+  }
+
+  back():void{
+    document.querySelector(".exploreBox")?.classList.add("displayNone");
+    document.querySelector(".exploreBox")?.classList.remove("displayFlex");
+    document.querySelector(".collectionsCategoriesBox")?.classList.add("displayNone");
+    document.querySelector(".collectionsCategoriesBox")?.classList.remove("displayFlex");
+    document.querySelector(".linksBox")?.classList.add("displayFlex");
+    document.querySelector(".linksBox")?.classList.remove("displayNone");
+    document.querySelector(".logoWrapper")?.classList.remove("displayNone");
+    document.querySelector(".backButton")?.classList.add("displayNone");
   }
 
 }
