@@ -27,23 +27,21 @@
 .container{
   width: 100%;
   min-height: 70vh;
-  background-color: #e3baba;
-
+  background-color: white;
   display: flex;
   flex-direction: column;
   justify-content: start;
   align-items: center;
-
-  padding: 0 10vw;
-
+  padding: 0 10vw 5vh 10vw;
   h1{
-    margin: 5vh 0;
-    @include text($boldPrimaryFont, 24px);
+    @include text($boldPrimaryFont, 40px);
+    padding-top: 10vh;
   }
 
   p{
-    @include text($primaryFont, 14px);
+    @include text($primaryFont, 15px);
     margin: 20px 0;
+
   }
 }
 
