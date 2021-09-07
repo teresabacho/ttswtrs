@@ -7,12 +7,15 @@
           <a [routerLink]="['/']" class="logo">TTSWTRS</a>
         </div>
         <div class="menuInnerWrapper">
-          <a [routerLink]="['/home']" (mouseover)="openCollections()"
-             class="shop">Shop
+          <a (mouseover)="openCollections()"
+             class="shop">
+            Shop
+<!--            <span class="transform">-->
+<!--              <span>一 {{route}}</span>-->
+<!--            </span>-->
           </a>
-          <a [routerLink]="['/home']" (mouseover)="openExplore()">Explore</a>
-          <!--          <a [routerLink]="['/vip']">VIP-примірка на дому</a>-->
-          <!--          <a [routerLink]="['/about']">Про нас</a>-->
+
+          <a (mouseover)="openExplore()">Explore</a>
         </div>
       </div>
       <div class="menuWrapperRight">
@@ -20,14 +23,14 @@
           <a href="#" class="search" (mouseover)="addHeaderColor()">
             <i class="uil uil-search"></i>
           </a>
-          <a [routerLink]="['/login']" class="margin" (mouseover)="addHeaderColor()">Login</a>
+          <a [routerLink]="['/login']" class="margin" (mouseover)="addHeaderColor()">Account</a>
           <a [routerLink]="['/favorites']" (mouseover)="addHeaderColor()">Fav</a>
           <a [routerLink]="['/basket']" class="basket" (mouseover)="addHeaderColor()"><i
-            class="uil uil-shopping-bag"></i></a>
+            class="uil uil-shopping-bag"></i>
+            <div class="count">{{countBasket}}</div>
+          </a>
         </div>
       </div>
-
-
     </div>
 
     <div class="fallContainer displayNone">
@@ -38,15 +41,25 @@
       <div class="fallContainerWrapper fallContainerBottom fallContainerCollCat displayNone"
            (mouseover)="openCollections()">
         <div class="collectionsContainer">
-          <a [routerLink]="['/products/collections']" (click)="closeCollections()">All Collections</a>
-          <a [routerLink]="['/products/fw21']" (click)="closeCollections()">FW 21</a>
-          <a [routerLink]="['/products/ss21']" (click)="closeCollections()">SS 21</a>
+          <a [routerLink]="['/products/collections/all-collections']" (click)="closeCollections()">All Collections</a>
+          <a *ngFor="let col of adminCollections"
+             [routerLink]="['/products/collections/', col.path]"
+             (click)="closeBurger()">
+            {{col.name | uppercase}}
+          </a>
+          <!--          <a [routerLink]="['/products/fw21']" (click)="closeCollections()">FW 21</a>-->
+          <!--          <a [routerLink]="['/products/ss21']" (click)="closeCollections()">SS 21</a>-->
         </div>
         <div class="categoriesContainer">
-          <a [routerLink]="['/products/accessories']" (click)="closeCollections()">Accessories</a>
-          <a [routerLink]="['/products/top']" (click)="closeCollections()">Top</a>
-          <a [routerLink]="['/products/dress']" (click)="closeCollections()">Dress</a>
-          <a [routerLink]="['/products/coat']" (click)="closeCollections()">Coat</a>
+          <a *ngFor="let cat of adminCategories"
+             [routerLink]="['/products/categories/', cat.path]"
+             (click)="closeBurger()">
+            {{cat.name | titlecase}}
+          </a>
+          <!--          <a [routerLink]="['/products/accessories']" (click)="closeCollections()">Accessories</a>-->
+          <!--          <a [routerLink]="['/products/top']" (click)="closeCollections()">Top</a>-->
+          <!--          <a [routerLink]="['/products/dress']" (click)="closeCollections()">Dress</a>-->
+          <!--          <a [routerLink]="['/products/coat']" (click)="closeCollections()">Coat</a>-->
         </div>
       </div>
 
@@ -55,21 +68,6 @@
         <a [routerLink]="['/about']" (click)="closeCollections()">About us</a>
       </div>
     </div>
-
-    <!--    <div class="exploreContainer displayNone" (mouseout)="closeExplore()">-->
-    <!--      <div class="collectionsContainer" (mouseout)="closeCollections()">-->
-    <!--        <span>Collections</span>-->
-    <!--        <a [routerLink]="['/favorites']">FW 21</a>-->
-    <!--        <a [routerLink]="['/favorites']">SS 21</a>-->
-    <!--      </div>-->
-    <!--      <div class="categoriesContainer">-->
-    <!--        <span>Categories</span>-->
-    <!--        <a [routerLink]="['/favorites']">Accessories</a>-->
-    <!--        <a [routerLink]="['/favorites']">Top</a>-->
-    <!--        <a [routerLink]="['/favorites']">Dress</a>-->
-    <!--      </div>-->
-    <!--    </div>-->
-
   </div>
 
 
@@ -77,6 +75,7 @@
     <div class="burgerMenuTop">
       <div class="menuWrapperLeft">
         <div class="menuInnerWrapper">
+          <!--          [ngClass]="{'displayNone': isBurgerM}"-->
           <div class="logoWrapper">
             <a [routerLink]="['/']" class="logo" (click)="closeBurger()">TTSWTRS</a>
           </div>
@@ -91,39 +90,54 @@
         <div class="menuInnerWrapper">
           <a [routerLink]="['/basket']" class="basket" (click)="closeBurger()">
             <i class="uil uil-shopping-bag"></i>
+            <div class="count">{{countBasket}}</div>
           </a>
 
           <div class="burgerMenuButtonWrapper" (click)="openBurger()">
-            <i class="burgerMenuButton uil uil-bars"></i>
+            <i class="burgerMenuButton uil uil-bars"
+               [ngClass]="{'uil-multiply': isBurgerMenuOpen}"></i>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="burgerMenuBottom displayNone">
+    <div class="burgerMenuBottom displayNone" [ngClass]="{'displayFlex': isBurgerMenuOpen}">
       <div class="burgerMenuWrapperTop">
         <div class="inputBox">
           <input type="text" placeholder="Search...">
         </div>
 
         <div class="linksWrapper">
+          <!--     SHOP/EXPLORE BURGER     -->
           <div class="linksBox displayFlex">
-            <a [routerLink]="['/products/collections']" (click)="openCollectionsBurger()">Shop</a>
-            <a [routerLink]="['/products/collections']" (click)="openExploreBurger()">Explore</a>
+            <a (click)="openShopBurger()">Shop</a>
+
+
+            <a (click)="openExploreBurger()">Explore</a>
           </div>
 
-          <div class="collectionsCategoriesBox displayNone">
+          <div class="collectionsCategoriesBox displayNone" [ngClass]="{'displayFlex' : isShopBurgerOpen}">
             <div class="left">
-              <a [routerLink]="['/products/collections']" (click)="closeBurger()">All Collections</a>
-              <a [routerLink]="['/products/fw21']" (click)="closeBurger()">FW 21</a>
-              <a [routerLink]="['/products/ss21']" (click)="closeBurger()">SS 21</a>
+              <a [routerLink]="['/products/collections/all-collections']" (click)="closeBurger()">All Collections</a>
+              <a *ngFor="let col of adminCollections"
+                 [routerLink]="['/products/collections/', col.name]"
+                 (click)="closeBurger()">
+                {{col.name | uppercase}}
+              </a>
+              <!--              <a [routerLink]="['/products/fw21']" (click)="closeBurger()">FW 21</a>-->
+              <!--              <a [routerLink]="['/products/ss21']" (click)="closeBurger()">SS 21</a>-->
             </div>
 
             <div class="right">
-              <a [routerLink]="['/products/accessories']" (click)="closeBurger()">Accessories</a>
-              <a [routerLink]="['/products/top']" (click)="closeBurger()">Top</a>
-              <a [routerLink]="['/products/dress']" (click)="closeBurger()">Dress</a>
-              <a [routerLink]="['/products/coat']" (click)="closeBurger()">Coat</a>
+              <a *ngFor="let cat of adminCategories"
+                 [routerLink]="['/products/categories/', cat.name]"
+                 (click)="closeBurger()">
+                {{cat.name | titlecase}}
+              </a>
+              <!--              <a [routerLink]="['/products/accessories']" (click)="closeBurger()">Accessories</a>-->
+              <!--              <a [routerLink]="['/products/top']" (click)="closeBurger()">Top</a>-->
+              <!--              <a [routerLink]="['/products/dress']" (click)="closeBurger()">Dress</a>-->
+              <!--              <a [routerLink]="['/products/coat']" (click)="closeBurger()">Coat</a>-->
             </div>
           </div>
 

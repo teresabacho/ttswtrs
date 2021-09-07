@@ -4,21 +4,16 @@
     <div class="imagesContainer" (click)="moreDetailsClose()">
       <div class="imagesContainerWrapper">
         <ul>
-          <li>
-            <img src="assets/images/ttswtrs_c3cd6518-c69f-41da-80ce-68dc6a88949c_1600x.jpg" alt="">
-          </li>
-          <li>
-            <img src="assets/images/ttswtrs_2_1600x.jpg" alt="">
-          </li>
-          <li>
-            <img src="assets/images/f4a6f891a26fa4edacccbf95d4c1d5e9_1600x.jpg" alt="">
+          <li *ngFor="let img of product?.images">
+            <img src="{{img}}" alt="">
           </li>
         </ul>
 
         <div class="heartContainer">
         <span>
-          <button type="button">
-          <i class="uil uil-heart-alt"></i>
+          <button type="button" (click)="addToFavorites(product)">
+          <i class="uil uil-heart-alt" *ngIf="!liked"></i>
+            <i class="uil uil-heart-alt liked" *ngIf="liked"></i>
         </button>
         </span>
         </div>
@@ -38,32 +33,62 @@
 
       <div class="detailsContainerWrapper">
         <div class="detailsContainerTop">
-          <h1>Name</h1>
-          <h2>FW21-BL-D003-W_{{1}}</h2>
+          <h1>{{ product?.name | titlecase}}</h1>
+          <h2>{{product?.ref | uppercase}}</h2>
           <div class="sizeContainer">
             <div>
               <h4>Size</h4>
             </div>
-            <ul>
-              <li>
-                <a href="#" class="inStock">S</a>
-              </li>
-              <li>
-                <a href="#" class="inStock">M</a>
-              </li>
-            </ul>
-          </div>
-          <button id="addToBasketBtn" disabled>
-            <span class="buttonBuyPrice visible displayFlex">
-              <span>
-                <i class="uil uil-shopping-bag"></i>
-                ADD
-              </span>
-              <span>200 USD</span>
-            </span>
 
-            <!--            <span class="selectASize hidden displayNone">SELECT A SIZE</span>-->
-          </button>
+            <form [formGroup]="sizeForm"
+                  (ngSubmit)="addToBasket(product)">
+              <ul>
+                <li *ngFor="let size of productSize">
+                  <input type="radio" value="{{size}}" id="{{size}}" name="size" formControlName="size">
+                  <label for="{{size}}">{{size | titlecase}}</label>
+                </li>
+              </ul>
+
+
+              <button class="addToBasketDis"
+                      type="button"
+                      [ngClass]="{'displayNone':sizeForm.valid}">
+                <div class="addTxt"
+                     (mouseover)="changeBtnSize()"
+                     [ngClass]="{'displayNone' : activeButton, 'displayFlex' : !activeButton}">
+              <span class="buttonBuyPrice">
+                <span>
+                  <i class="uil uil-shopping-bag"></i>
+                  ADD
+                </span>
+                <span>{{product?.price}} USD</span>
+              </span>
+                </div>
+
+                <div class="selectTxt displayNone"
+                     (mouseout)="changeBtnSize()"
+                     [ngClass]="{'displayNone' : !activeButton, 'displayFlex' : activeButton}">
+                    <span>
+                      SELECT A SIZE
+                    </span>
+                </div>
+
+              </button>
+
+              <button class="addToBasketActive"
+                      type="submit"
+                      [ngClass]="{'displayNone':sizeForm.invalid}">
+                <span class="selectASize">ADD TO CART</span>
+              </button>
+            </form>
+            <!--            <ul>-->
+            <!--              <li *ngFor="let size of product?.size">-->
+            <!--                <a href="#">{{size | titlecase}}</a>-->
+            <!--              </li>-->
+            <!--            </ul>-->
+          </div>
+
+
         </div>
 
         <div class="detailsContainerBottom">
@@ -72,18 +97,18 @@
           </a>
         </div>
 
-        <aside class="displayNone">
+        <!--        class="displayNone"-->
+        <aside [ngClass]="{'displayNone' : !asideIsOpen}">
           <div class="asideWrapper">
             <div class="moreDetailsContainer">
-              <h1>Name</h1>
+              <h1>{{ product?.name | titlecase}}</h1>
               <div class="composition">
                 <h4>Composition:</h4>
-                <p>95% silk</p>
-                <p>5% elastane</p>
+                <p *ngFor="let comp of product?.composition">{{comp}}</p>
               </div>
               <div class="aboutModel">
                 <p>
-                  The model is {{178}} cm tall and wears a size {{34}}
+                  The model is {{product?.modelHeight}} cm tall and wears a size {{product?.modelSize | titlecase}}
                 </p>
               </div>
               <div class="care">
@@ -100,7 +125,7 @@
 
         </aside>
 
-        <div class="grey displayNone" (click)="moreDetailsClose()"></div>
+        <div class="grey" (click)="moreDetailsClose()" [ngClass]="{'displayNone': !asideIsOpen}"></div>
       </div>
     </div>
   </div>
@@ -156,7 +181,6 @@
             <img src="assets/images/f4a6f891a26fa4edacccbf95d4c1d5e9_1600x.jpg" alt="">
             <img src="assets/images/ttswtrs_2_1600x.jpg" alt="">
           </div>
-
 
 
         </div>

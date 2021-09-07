@@ -52,6 +52,20 @@ a {
     display: inline-block;
     width: 120px;
     position: relative;
+    cursor: pointer;
+    transition: background 0.3s cubic-bezier(0.25, 0.1, 0.25, 1) 0s, color 0.3s cubic-bezier(0.25, 0.1, 0.25, 1) 0s;
+
+
+    span {
+      @include text($primaryFont, 10px, $sideColor);
+      color: $sideColor;
+
+    }
+  }
+
+  a:hover span {
+    opacity: 0;
+    transform: translateX(100%) translateZ(0px);
   }
 
   .logo {
@@ -61,17 +75,20 @@ a {
   }
 
 
-  .shop:after {
-    content: "一 Top";
-    display: block;
-    position: absolute;
-    top: 2px;
-    left: 40px;
-    width: 70px;
-    //background-color: $lightColor;
-    @include text($primaryFont, 10px, 500, $sideColor);
-  }
 }
+
+
+//.shop:after {
+//  content: "一 Top";
+//  display: block;
+//  position: absolute;
+//  top: 2px;
+//  left: 40px;
+//  width: 70px;
+//  //background-color: $lightColor;
+//  @include text($primaryFont, 10px, 500, $sideColor);
+//}
+
 
 .menuWrapperRight {
   width: 30%;
@@ -92,8 +109,9 @@ a {
   width: 14px;
 }
 
-.basket:before {
-  content: "";
+.basket {}
+
+.count {
   @include text($primaryFont, 8px);
   position: absolute;
   width: 10px;
@@ -102,6 +120,8 @@ a {
   top: -5px;
   left: 99%;
   background-color: $sdPrimaryColor;
+  text-align: center;
+  line-height: 10px;
 }
 
 
@@ -134,17 +154,10 @@ a {
     width: 120px;
     margin-top: 10px;
     color: $primaryColor;
+    cursor: pointer;
   }
-
-  //span {
-  //  display: inline-block;
-  //  width: 100px;
-  //  margin: 20px 0 0 0;
-  //  @include text($primaryFont, 14px, $sideColor);
-  //  color: $sideColor;
-  //  //letter-spacing: 1.1px;
-  //}
 }
+
 
 .collectionsContainer {
   display: flex;
@@ -205,7 +218,7 @@ a {
               height: 14px;
               @include text($primaryFont, 14px);
 
-              i{
+              i {
                 width: 14px;
                 height: 14px;
                 @include text($primaryFont, 14px);

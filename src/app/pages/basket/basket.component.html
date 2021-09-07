@@ -4,24 +4,25 @@
     <div class="secondContainerTopWrapper">
       <h1>Order summary</h1>
     </div>
-
-    <div class="emptyBasket displayNone">
-      <div class="secondContainerBottom">
-        <div>
+    <div class="emptyBasket"
+         *ngIf="!basket.length">
+      <div class="secondContainerBottom sdContBt">
+        <div style="flex-direction: column">
           <h6>Your cart is empty</h6>
+          <h2>
+            <a [routerLink]="'/products/collections/all-collections'">Shop now!</a>
+          </h2>
         </div>
       </div>
     </div>
   </div>
 
-
-  <div class="fullBasketContainer">
-
+  <div class="fullBasketContainer" *ngIf="basket.length">
     <div class="secondContainerBottom padding40">
       <div>
-        <h6 class="displayNone">{{1}} article</h6>
-        <h6>{{13}} articles</h6>
-        <h6>{{1234}} USD</h6>
+        <h6 [ngClass]="{'displayNone' : !oneProduct}">{{basket.length}} article</h6>
+        <h6 [ngClass]="{'displayNone' : oneProduct}">{{basket.length}} articles</h6>
+        <h6>{{totalPrice}} USD</h6>
       </div>
 
       <div>
@@ -31,66 +32,43 @@
 
       <div>
         <h3>TOTAL</h3>
-        <h3>{{1234}} USD</h3>
+        <h3>{{totalPrice}} USD</h3>
       </div>
     </div>
 
 
     <div class="secondProductsContainer">
 
-      <div class="productInBasket">
+      <div class="productInBasket" *ngFor="let order of basket">
         <div class="productInBasketLeft">
-          <img src="./assets/images/silkDressBlack.jpg" alt="">
+          <img src="{{order.images[0]}}" alt="">
         </div>
 
         <div class="productInBasketRight">
           <div class="prodBasTop">
             <a>
-              <span>Remove</span>
+              <span (click)="removeProduct(order)">Remove</span>
             </a>
           </div>
 
           <div class="prodBasCenter">
-            <h3>Name</h3>
-            <h6>White</h6>
+            <h3>{{order.name | titlecase}}</h3>
+            <h6>{{order.color | titlecase}}</h6>
           </div>
 
           <div class="prodBasBottom">
-            <div class="size">Size {{38}}</div>
-            <div class="price">{{110}} USD</div>
+            <div class="size">Size {{order.size[0] | titlecase}}</div>
+            <div class="price">{{order.price}} USD</div>
           </div>
         </div>
       </div>
-
-      <div class="productInBasket">
-        <div class="productInBasketLeft">
-          <img src="./assets/images/silkDressBlack.jpg" alt="">
-        </div>
-
-        <div class="productInBasketRight">
-          <div class="prodBasTop">
-            <a>
-              <span>Remove</span>
-            </a>
-          </div>
-
-          <div class="prodBasCenter">
-            <h3>Name</h3>
-            <h6>White</h6>
-          </div>
-
-          <div class="prodBasBottom">
-            <div class="size">Size {{38}}</div>
-            <div class="price">{{110}} USD</div>
-          </div>
-        </div>
-      </div>
-
 
     </div>
 
+    <button class="checkout">
+      <a [routerLink]="'/order/'">CHECKOUT</a>
+    </button>
   </div>
-
 
 </div>
 

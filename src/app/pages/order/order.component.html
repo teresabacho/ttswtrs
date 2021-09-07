@@ -1,0 +1,103 @@
+<div class="secondContainer">
+
+  <form [formGroup]="orderForm"
+        (ngSubmit)="addOrder()">
+    <h1>Shipping details</h1>
+
+    <div class="nameContainer">
+      <div class="nameWrapper">
+        <label for="firstname">First name</label>
+        <input type="text" formControlName="firstname" id="firstname">
+      </div>
+
+      <div class="nameWrapper">
+        <label for="lastname">Last name</label>
+        <input type="text" formControlName="lastname" id="lastname">
+      </div>
+    </div>
+
+    <label for="country">Country</label>
+    <input type="text" formControlName="country" id="country">
+
+    <label for="city">City</label>
+    <input type="text" formControlName="city" id="city">
+
+    <label for="address">Address</label>
+    <input type="text" formControlName="address" id="address">
+
+    <label for="apartment">Apartment</label>
+    <input type="text" formControlName="apartment" id="apartment">
+
+    <label for="zipcode">Zipcode</label>
+    <input type="text" formControlName="zipcode" id="zipcode">
+
+    <div class="nameContainer">
+      <div class="nameWrapper areaCodeWrapper">
+        <label for="areaCode">Area Code</label>
+        <input type="text" formControlName="areaCode" id="areaCode" value="UA +380" readonly>
+      </div>
+
+      <div class="nameWrapper phoneWrapper">
+        <label for="phone">Phone</label>
+        <input type="text" formControlName="phone" id="phone">
+      </div>
+    </div>
+
+
+    <div class="deliveryWrapper">
+      <input type="radio" formControlName="delivery" id="upsSaver" name="delivery" value="0">
+      <label for="upsSaver">
+        <div>
+          <h3>UPS Saver</h3>
+          <h3>FREE</h3>
+        </div>
+        <span>Delivery to Ukraine within 3 to 6 working days</span>
+      </label>
+    </div>
+
+    <div class="deliveryWrapper">
+      <input type="radio" formControlName="delivery" id="upsExpress" name="delivery" value="30">
+      <label for="upsExpress">
+        <div>
+          <h3>UPS Express</h3>
+          <h3>30 USD</h3>
+        </div>
+        <span>
+          Delivery to Ukraine within 2 and 4 working days
+        </span>
+      </label>
+    </div>
+
+
+    <!--    <button type="submit"-->
+    <!--    >Payment</button>-->
+
+
+    <button class="addToBasketDis" type="button" [ngClass]="{'displayNone':orderForm.valid}">
+      <div class="addTxt" (mouseover)="changeBtnSize()"
+           [ngClass]="{'displayNone' : activeButton, 'displayFlex' : !activeButton}">
+              <span class="buttonBuyPrice">
+                <span>PAYMENT</span>
+              </span>
+      </div>
+
+      <div class="selectTxt displayNone"
+           (mouseout)="changeBtnSize()"
+           [ngClass]="{'displayNone' : !activeButton, 'displayFlex' : activeButton}">
+        <span>FILL ALL THE FIELDS</span>
+      </div>
+
+    </button>
+    <button class="addToBasketActive"
+            type="submit"
+            [ngClass]="{'displayNone':orderForm.invalid}">
+      <span class="selectASize">PAYMENT</span>
+    </button>
+
+  </form>
+
+
+</div>
+
+
+

@@ -32,6 +32,11 @@
   width: inherit;
   object-fit: contain;
 
+  ul {
+    list-style-type: none;
+    padding-left: 0;
+  }
+
   li {
     width: 100%;
     height: 100%;
@@ -57,10 +62,10 @@
   span {
     display: block;
     position: absolute;
-    right: 2.778vw;
-    bottom: 2.778vw;
-    width: 0.833vw;
-    height: 0.764vw;
+    right: 2vw;
+    bottom: 2vw;
+    width: 3vw;
+    height: 3vw;
 
     button {
       background-color: transparent;
@@ -153,41 +158,6 @@
   h2 {
     @include text($boldPrimaryFont, 14px)
   }
-
-  button {
-    background-color: $primaryColor;
-    @include text($primaryFont, 14px, 500, $lightColor);
-    text-transform: uppercase;
-    height: 10vh;
-    border: solid 1px $primaryColor;
-    cursor: pointer;
-    border-radius: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    transition: background 0.3s cubic-bezier(0.25, 0.1, 0.25, 1) 0s, color 0.3s cubic-bezier(0.25, 0.1, 0.25, 1) 0s, border-color 0.3s cubic-bezier(0.25, 0.1, 0.25, 1) 0s;
-    width: 100%;
-    padding: 0 2rem;
-    margin-top: 15vh;
-  }
-
-  button:disabled {
-    background-color: transparent;
-    @include text($primaryFont, 14px, 500, $primaryColor);
-    opacity: 0.9;
-  }
-}
-
-.buttonBuyPrice {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-
-  i {
-    margin-right: 1vw;
-  }
 }
 
 
@@ -200,9 +170,9 @@
   //transform: translateY(var(--collapse-height));
 
   div {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+    //display: flex;
+    //justify-content: space-between;
+    //align-items: flex-start;
 
     h4 {
       @include text($primaryFont, 14px);
@@ -210,22 +180,126 @@
     }
   }
 
-  ul {
+  form {
     display: flex;
-    flex-wrap: wrap;
-    flex-flow: wrap;
+    flex-direction: column;
 
-    li {
-      list-style-type: none;
-      padding-right: 1.2rem;
 
-      a {
-        text-decoration: none;
-        @include text($primaryFont, 14px);
+    ul {
+      display: flex;
+      flex-direction: row;
+      padding-left: 0;
+      height: 15px;
+
+      li {
+        list-style-type: none;
+        padding-right: 1.2rem;
+
+        input[type="radio"] {
+          display: none;
+        }
+
+        label {
+          cursor: pointer;
+          @include text($primaryFont, 14px);
+          position: relative;
+          display: inline-block;
+          width: 2vw;
+          text-align: center;
+        }
+
+        label:after {
+          position: absolute;
+          left: 0;
+          right: 0;
+          content: '';
+          height: 1px;
+          bottom: -1px;
+          background-color: $primaryColor;
+          transform: scaleX(0);
+          transform-origin: right;
+          pointer-events: none;
+          transition: transform .4s cubic-bezier(0.25, 0.1, 0.25, 1), background-color .3s cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+
+        label:hover:after {
+          transform: scaleX(1);
+          transform-origin: left;
+        }
+
+        input:checked + label {
+          border-bottom: 1px solid $primaryColor;
+        }
+      }
+    }
+
+    button {
+      //display: flex;
+      text-transform: uppercase;
+      height: 10vh;
+      border: solid 1px $primaryColor;
+      cursor: pointer;
+      border-radius: 0;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      transition: background 0.3s cubic-bezier(0.25, 0.1, 0.25, 1) 0s, color 0.3s cubic-bezier(0.25, 0.1, 0.25, 1) 0s, border-color 0.3s cubic-bezier(0.25, 0.1, 0.25, 1) 0s;
+      width: 100%;
+      margin-top: 15vh;
+
+      div {
+        height: 100%;
+        width: 100%;
       }
     }
   }
 }
+
+.addToBasketDis {
+  background-color: transparent;
+  @include text($primaryFont, 14px, 500, $primaryColor);
+  opacity: 0.8;
+}
+
+.addToBasketActive {
+  background-color: $primaryColor;
+  @include text($primaryFont, 14px, 500, $lightColor);
+  opacity: 1;
+}
+
+.addToBasketActive:disabled{
+  opacity: 0.5;
+}
+
+.buttonBuyPrice {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  margin: 0 3vw 0 3vw;
+
+  i {
+    margin-right: 1vw;
+  }
+}
+
+.selectTxt {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+
+  span {
+    width: 100%;
+    height: 100%;
+    line-height: 10vh;
+  }
+}
+
+
+
 
 .sizeContainer:before {
   content: '';
@@ -235,6 +309,8 @@
   width: 100%;
   margin-bottom: 2.4rem;
 }
+
+
 
 
 .detailsContainerBottom {
@@ -461,6 +537,7 @@ aside {
   .detailsContainerBottom {
     a {
       cursor: default;
+
       span:after {
         transform: scaleX(1);
       }
@@ -504,14 +581,18 @@ aside {
     padding-top: 3vh;
   }
 
-  .otherPhotosContainer{
+  .otherPhotosContainer {
     width: 100%;
 
-    img{
+    img {
       width: 100%;
     }
   }
 
 
+}
+
+.liked{
+  color: $sdPrimaryColor;
 }
 

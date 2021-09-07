@@ -4,6 +4,7 @@
 
 .secondContainer {
   background-color: $lightColor;
+
 }
 
 .secondContainerBottom {
@@ -23,11 +24,37 @@
       margin: 0;
     }
 
-    h3 {
-      @include text($boldPrimaryFont, 20px);
+    h2 {
+      text-align: center;
       letter-spacing: 2px;
+
+      a {
+        @include text($primaryFont, 18px);
+        text-decoration: none;
+        position: relative;
+      }
+
+      a:after {
+        position: absolute;
+        left: 0;
+        right: 0;
+        content: '';
+        height: 1px;
+        bottom: -1px;
+        background-color: $primaryColor;
+        transform: scaleX(1);
+        transform-origin: right;
+        pointer-events: none;
+        transition: transform .3s cubic-bezier(0.25, 0.1, 0.25, 1), background-color .3s cubic-bezier(0.25, 0.1, 0.25, 1);
+      }
+
+      a:hover:after {
+        transform: scaleX(0);
+        transform-origin: left;
+      }
     }
   }
+
 
   div:nth-child(2) {
     margin-top: 3vh;
@@ -67,7 +94,7 @@
   //height: 200px;
   //background-color: #bf2424;
 
-  img{
+  img {
     width: 100%;
   }
 }
@@ -116,28 +143,58 @@
   }
 }
 
-.prodBasCenter{
-  h3{
+.prodBasCenter {
+  h3 {
     @include text($boldPrimaryFont, 14px);
   }
 
-  h6{
+  h6 {
     margin-top: 1vh;
-    @include text($primaryFont, 14px, 500, $sideColor);
+    @include text($primaryFont, 12px, 500, $sideColor);
   }
 }
 
-.prodBasBottom{
+.prodBasBottom {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 
-  div{
+  div {
     @include text($primaryFont, 14px);
   }
 }
 
+.fullBasketContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
+.checkout{
+  //display: flex;
+  text-transform: uppercase;
+  height: 10vh;
+  border: solid 1px $primaryColor;
+  cursor: pointer;
+  border-radius: 0;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transition: background 0.3s cubic-bezier(0.25, 0.1, 0.25, 1) 0s, color 0.3s cubic-bezier(0.25, 0.1, 0.25, 1) 0s, border-color 0.3s cubic-bezier(0.25, 0.1, 0.25, 1) 0s;
+  width: 90%;
+  margin: 15vh 0;
+  background-color: $primaryColor;
+
+  a{
+    display: block;
+    line-height: 10vh;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    @include text($primaryFont, 14px, 500, $lightColor);
+  }
+}
 
 
 @media screen and (max-width: 900px) {
@@ -150,6 +207,10 @@
 
   .padding40 {
     padding: 0 10px;
+  }
+
+  .productInBasketRight {
+    padding: 10px 0 10px 10px;
   }
 
 }

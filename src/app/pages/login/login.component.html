@@ -1,2 +1,112 @@
+<div class="secondContainer">
 
-<p>login</p>
+  <form class="register" [formGroup]="registerForm"
+        (ngSubmit)="register()" *ngIf="!formChecker">
+    <h1>Account</h1>
+    <div>
+      <h3>Create your account below.</h3>
+      <span>
+         <a (click)="switchForm()">Back to login</a>
+       </span>
+    </div>
+
+    <label for="email">Email</label>
+    <input type="text" formControlName="email" id="email">
+
+    <!--     <div class="nameContainer">-->
+    <!--       <div class="nameWrapper">-->
+    <!--         <label for="firstname">First name</label>-->
+    <!--         <input type="text" formControlName="firstname" id="firstname">-->
+    <!--       </div>-->
+
+    <!--       <div class="nameWrapper">-->
+    <!--         <label for="lastname">Last name</label>-->
+    <!--         <input type="text" formControlName="lastname" id="lastname">-->
+    <!--       </div>-->
+    <!--     </div>-->
+
+    <div class="nameContainer">
+      <div class="nameWrapper">
+        <label for="password">Password</label>
+        <input type="password" formControlName="password" id="password">
+      </div>
+
+      <!--       <div class="nameWrapper">-->
+      <!--         <label for="confirmPassword">Confirm password</label>-->
+      <!--         <input type="text" formControlName="confirmPassword" id="confirmPassword">-->
+      <!--       </div>-->
+    </div>
+
+    <button class="addToBasketDis" type="button" *ngIf="loginForm.invalid">
+      <div class="addTxt" (mouseover)="changeBtnSize()"
+           [ngClass]="{'displayNone' : activeButton, 'displayFlex' : !activeButton}">
+               <span class="buttonBuyPrice">
+                 <span>REGISTER</span>
+               </span>
+      </div>
+
+      <div class="selectTxt displayNone"
+           (mouseout)="changeBtnSize()"
+           [ngClass]="{'displayNone' : !activeButton, 'displayFlex' : activeButton}">
+        <span>FILL ALL THE FIELDS</span>
+      </div>
+
+    </button>
+
+    <button class="addToBasketActive"
+            type="submit"
+            *ngIf="!loginForm.invalid">
+      <span class="selectASize">REGISTER</span>
+    </button>
+  </form>
+
+
+  <form class="loginForm" [formGroup]="loginForm"
+        (ngSubmit)="login()" *ngIf="formChecker">
+
+    <h1>Account</h1>
+
+    <div class="signInTxt">
+      <h3>Sign in your account.</h3>
+    </div>
+
+    <label for="emailLogin">Email</label>
+    <input type="text" formControlName="email" id="emailLogin">
+
+    <label for="passwordLogin">Password</label>
+    <input type="password" formControlName="password" id="passwordLogin">
+
+    <div>
+      <span>
+        <a (click)="switchForm()">Dont have an account?</a>
+      </span>
+    </div>
+
+<!--    [ngClass]="{'displayNone':loginForm.valid}"-->
+    <button class="addToBasketDis" type="button" *ngIf="loginForm.invalid">
+      <div class="addTxt" (mouseover)="changeBtnSize()"
+           [ngClass]="{'displayNone' : activeButton, 'displayFlex' : !activeButton}">
+              <span class="buttonBuyPrice">
+                <span>LOGIN</span>
+              </span>
+      </div>
+
+      <div class="selectTxt displayNone"
+           (mouseout)="changeBtnSize()"
+           [ngClass]="{'displayNone' : !activeButton, 'displayFlex' : activeButton}">
+        <span>FILL ALL THE FIELDS</span>
+      </div>
+    </button>
+
+    <!--    [ngClass]="{'displayNone':loginForm.invalid}"-->
+    <button class="addToBasketActive"
+            type="submit"
+            *ngIf="!loginForm.invalid">
+      <span class="selectASize">LOGIN</span>
+    </button>
+
+
+  </form>
+
+</div>
+
