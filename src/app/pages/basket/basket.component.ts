@@ -39,7 +39,7 @@ export class BasketComponent implements OnInit {
   }
 
   private getTotal(products: Array<IProduct>): number {
-    return products.reduce((total, prod) => total + (prod.price), 0);
+    return products.reduce((total, prod) => total + Number(prod.price), 0);
   }
 
   removeProduct(product: IProduct): void {

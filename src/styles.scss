@@ -10,29 +10,30 @@
 
 @font-face {
   font-family: Raleway;
-  src: url("/assets/fonts/Raleway-Medium.ttf");
+  src: url("../src/assets/fonts/Raleway-Medium.ttf");
 }
 
 @font-face {
   font-family: RalewayBold;
-  src: url("/assets/fonts/Raleway-Bold.ttf");
+  src: url("../src/assets/fonts/Raleway-Bold.ttf");
 }
 
 @font-face {
   font-family: Padaloma;
-  src: url("/assets/fonts/Padaloma_i.ttf");
+  src: url("../src/assets/fonts/Padaloma_i.ttf");
 }
 
 
 .myContainer{
   width: 100%;
   min-height: 70vh;
-  background-color: white;
+  background-color: $lightColor;
   display: flex;
   flex-direction: column;
   justify-content: start;
   align-items: center;
   padding: 0 10vw 5vh 10vw;
+
   h1{
     @include text($boldPrimaryFont, 40px);
     padding-top: 10vh;
@@ -41,7 +42,6 @@
   p{
     @include text($primaryFont, 15px);
     margin: 20px 0;
-
   }
 }
 
@@ -119,7 +119,10 @@
   display: flex;
 }
 
-
 .padding40{
   padding: 0 40px;
+}
+;
+.liked{
+  color: #68ed87;
 }

@@ -4,13 +4,13 @@
 header {
   width: 100%;
   height: 10vh;
-  //background-color: $lightColor;
   position: fixed;
-  z-index: 93849498;
-
+  z-index: 2;
+  background-color: $lightColor;
+  color: $primaryColor;
 
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
 
@@ -34,10 +34,41 @@ header {
   }
 }
 
+
 a {
   position: relative;
   text-decoration: none;
-  @include text($primaryFont, 14px);
+  @include text($primaryFont, 14px, 500, inherit);
+
+
+
+  span{
+    cursor: pointer;
+    @include text($primaryFont, 14px, 500, inherit);
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+  }
+
+  span:after{
+    position: absolute;
+    left: 0;
+    right: 0;
+    content: '';
+    height: 1px;
+    bottom: -1px;
+    background-color: $primaryColor;
+    transform: scaleX(0);
+    transform-origin: right;
+    pointer-events: none;
+    transition: transform .4s cubic-bezier(0.25, 0.1, 0.25, 1), background-color .3s cubic-bezier(0.25, 0.1, 0.25, 1);
+  }
+
+  span:hover:after{
+    transform: scaleX(1);
+    transform-origin: left;
+  }
 }
 
 
@@ -59,7 +90,6 @@ a {
     span {
       @include text($primaryFont, 10px, $sideColor);
       color: $sideColor;
-
     }
   }
 
@@ -69,7 +99,7 @@ a {
   }
 
   .logo {
-    @include text($logoFont, 22px);
+    @include text($logoFont, 22px, 500, inherit);
     padding-left: 40px;
     width: 280px;
   }
@@ -98,6 +128,11 @@ a {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
+
+    button{
+      background-color: transparent;
+      border: 0 solid transparent;
+    }
   }
 
   a {
@@ -109,7 +144,8 @@ a {
   width: 14px;
 }
 
-.basket {}
+.basket {
+}
 
 .count {
   @include text($primaryFont, 8px);
@@ -140,6 +176,7 @@ a {
     justify-content: flex-start;
     align-items: flex-start;
     padding-top: 20px;
+    height: 150px;
   }
 
   .exploreContainer {
@@ -165,6 +202,7 @@ a {
   justify-content: flex-start;
   align-items: flex-start;
   flex-wrap: wrap;
+  height: 100%;
 }
 
 .categoriesContainer {
@@ -173,12 +211,16 @@ a {
   justify-content: start;
   align-items: flex-start;
   flex-wrap: wrap;
-  height: 15vh;
+  height: 100%;
 }
 
 
 @media screen and(max-width: $screen-md-max+px) {
   header {
+    .menuMain{
+      width: 0;
+    }
+
     .menuContainer {
       display: none;
     }
@@ -265,50 +307,7 @@ a {
           display: flex;
           flex-direction: column;
           width: 100%;
-
-          .inputBox {
-            width: 100%;
-            position: relative;
-            margin-bottom: 3vh;
-            margin-top: 20vh;
-          }
-
-          .inputBox:after {
-            content: '';
-            position: absolute;
-            height: 1px;
-            width: 100%;
-            display: block;
-            left: 0;
-            right: 0;
-            background: $primaryColor;
-            border-radius: 1px;
-          }
-
-          input {
-            width: 100%;
-            display: inline-block;
-            text-align: start;
-            appearance: auto;
-
-            @include text($primaryFont, 18px);
-
-            line-height: 2rem;
-            letter-spacing: 0.035em;
-            border: none;
-            background: transparent;
-            padding: 1vh 0;
-
-          }
-
-          input:focus {
-            outline: none;
-          }
-
-          input::placeholder {
-            @include text($primaryFont, 18px);
-          }
-
+          margin-top: 20vh;
 
           a {
             margin: 2vh 0;
@@ -342,12 +341,13 @@ a {
   //display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  cursor: pointer;
 }
 
 .collectionsCategoriesBox, .exploreBox {
   width: 100%;
   //padding-top: 2vh;
-  //display: flex;
+  display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: flex-start;
@@ -374,6 +374,17 @@ a {
 }
 
 
+
+
+header {
+  width: 100%;
+  height: 10vh;
+  position: fixed;
+  z-index: 2;
+}
+
+
+
 .displayNone {
   display: none;
 }
@@ -386,7 +397,21 @@ a {
   background-color: $lightColor;
 }
 
+.transparent {
+  background-color: transparent;
+}
 
+.colored {
+  background-color: $sdPrimaryColor;
+}
+
+.whiteColor {
+  color: $lightColor;
+}
+
+.primaryColor {
+  color: $primaryColor;
+}
 
 
 

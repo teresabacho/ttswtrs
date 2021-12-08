@@ -1,0 +1,17 @@
+@import "/src/app/shared/styles/variables";
+@import "/src/app/shared/styles/mixins";
+
+
+h3{
+  @include text($boldPrimaryFont, 20px, 500, $sdPrimaryColor);
+  text-align: center;
+  padding-top: 3vh;
+}
+
+video{
+   width: 100%;
+}
+
+audio{
+  margin-top: 5vh;
+}

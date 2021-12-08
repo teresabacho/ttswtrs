@@ -567,10 +567,11 @@ aside {
       li {
         margin: 0 1vw;
 
-        a {
+        input{
           @include text($primaryFont, 14px);
           text-decoration: none;
         }
+
       }
     }
   }

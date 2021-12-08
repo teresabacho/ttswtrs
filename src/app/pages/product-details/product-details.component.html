@@ -11,9 +11,13 @@
 
         <div class="heartContainer">
         <span>
-          <button type="button" (click)="addToFavorites(product)">
-          <i class="uil uil-heart-alt" *ngIf="!liked"></i>
-            <i class="uil uil-heart-alt liked" *ngIf="liked"></i>
+          <button type="button">
+            <i class="uil uil-heart-alt" *ngIf="!product?.liked"
+               (click)="addToFavorites(product)"></i>
+            <i class="uil uil-heart-alt liked" *ngIf="product?.liked"
+               (click)="removeFromFavorites(product)"></i>
+            <!--            (click)="removeFromFavorites(product)"-->
+            <!--            (click)="addToFavorites(product)"-->
         </button>
         </span>
         </div>
@@ -81,11 +85,6 @@
                 <span class="selectASize">ADD TO CART</span>
               </button>
             </form>
-            <!--            <ul>-->
-            <!--              <li *ngFor="let size of product?.size">-->
-            <!--                <a href="#">{{size | titlecase}}</a>-->
-            <!--              </li>-->
-            <!--            </ul>-->
           </div>
 
 
@@ -136,14 +135,14 @@
       <div class="smContainer">
 
         <div class="contentContainerSm">
-          <div class="mainImgContainer">
-            <img src="assets/images/ttswtrs_c3cd6518-c69f-41da-80ce-68dc6a88949c_1600x.jpg" alt="">
+          <div class="mainImgContainer" *ngFor="let img of product?.images">
+            <img src="{{img}}" alt="">
           </div>
 
           <div class="detailsContainerSm">
             <div class="detailsContainerSmWrapper">
-              <h1>Name</h1>
-              <h2>FW21-BL-D003-W_{{1}}</h2>
+              <h1>{{ product?.name | titlecase}}</h1>
+              <h2>{{product?.ref | uppercase}}</h2>
 
               <div class="detailsContainerBottom">
                 <a class="moreDetails">
@@ -190,13 +189,20 @@
             <h4>Size</h4>
 
             <ul>
-              <li>
-                <a href="#" class="inStock">S</a>
-              </li>
-              <li>
-                <a href="#" class="inStock">M</a>
+              <li *ngFor="let size of productSize">
+                <input type="radio" value="{{size}}" id="{{size}}.sm" name="size" formControlName="size">
+                <label for="{{size}}">{{size | titlecase}}</label>
               </li>
             </ul>
+
+<!--            <ul>-->
+<!--              <li>-->
+<!--                <a href="#" class="inStock">S</a>-->
+<!--              </li>-->
+<!--              <li>-->
+<!--                <a href="#" class="inStock">M</a>-->
+<!--              </li>-->
+<!--            </ul>-->
           </div>
 
           <button id="addToBasketBtn" disabled>

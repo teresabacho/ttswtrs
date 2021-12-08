@@ -1,8 +1,10 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {AngularFireDatabase} from "@angular/fire/compat/database";
 import {Observable} from "rxjs";
 import {ICategory} from "../../model/category/category.model";
 import {ICollection} from "../../model/collection/collection.model";
+import {IProduct} from "../../model/product/product.model";
+import {AngularFirestore} from "@angular/fire/compat/firestore";
 
 @Injectable({
   providedIn: 'root'
@@ -10,26 +12,25 @@ import {ICollection} from "../../model/collection/collection.model";
 export class CollectionService {
 
   constructor(
-    private db: AngularFireDatabase,
-  ) { }
-
-  getCollectionsFirebaseId(): Observable<any> {
-    return this.db.list('/db/collections').snapshotChanges();
+    private afs: AngularFirestore
+  ) {
   }
 
-  getCollectionsFirebaseData(): Observable<any> {
-    return this.db.list('/db/collections').valueChanges();
+  // new
+
+  getCollections(): Observable<any> {
+    return this.afs.collection<ICollection>('collections').valueChanges({idField: 'id'});
   }
 
-  pushCollectionFirebase(collection: ICollection) {
-    return this.db.list('/db/collections').push(collection);
+  pushCollection(collection: ICollection) {
+    return this.afs.collection<any>('collections').add(collection);
   }
 
-  removeCollectionFirebase(id: string) {
-    return this.db.list('/db/collections').remove(id);
+  removeCollection(collection: ICollection) {
+    return this.afs.doc<ICollection>(`collections/${collection.id}`).delete();
   }
 
-  updateCollectionFirebase(collection: ICollection, id: string) {
-    return this.db.list("/db/collections").update(id, collection)
+  updateCollection(collection: ICollection, id: string) {
+    return this.afs.doc<ICollection>(`collections/${id}`).update(collection);
   }
 }

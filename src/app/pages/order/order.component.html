@@ -7,12 +7,12 @@
     <div class="nameContainer">
       <div class="nameWrapper">
         <label for="firstname">First name</label>
-        <input type="text" formControlName="firstname" id="firstname">
+        <input type="text" formControlName="firstName" id="firstname">
       </div>
 
       <div class="nameWrapper">
         <label for="lastname">Last name</label>
-        <input type="text" formControlName="lastname" id="lastname">
+        <input type="text" formControlName="lastName" id="lastname">
       </div>
     </div>
 
@@ -31,17 +31,11 @@
     <label for="zipcode">Zipcode</label>
     <input type="text" formControlName="zipcode" id="zipcode">
 
-    <div class="nameContainer">
-      <div class="nameWrapper areaCodeWrapper">
-        <label for="areaCode">Area Code</label>
-        <input type="text" formControlName="areaCode" id="areaCode" value="UA +380" readonly>
-      </div>
+    <label for="phone">Phone</label>
+    <input type="text" formControlName="phone" id="phone">
 
-      <div class="nameWrapper phoneWrapper">
-        <label for="phone">Phone</label>
-        <input type="text" formControlName="phone" id="phone">
-      </div>
-    </div>
+    <label for="email">Email</label>
+    <input type="text" formControlName="email" id="email">
 
 
     <div class="deliveryWrapper">
@@ -67,10 +61,6 @@
         </span>
       </label>
     </div>
-
-
-    <!--    <button type="submit"-->
-    <!--    >Payment</button>-->
 
 
     <button class="addToBasketDis" type="button" [ngClass]="{'displayNone':orderForm.valid}">

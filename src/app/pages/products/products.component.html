@@ -2,18 +2,20 @@
 
   <div class="prodContainer"
        *ngFor="let prod of userProducts"
-       (mouseover)="showDescription(prod.id);check(prod.id)" (mouseout)="hideDescription(prod.id)">
+       (mouseover)="showDescription(prod.id)" (mouseout)="hideDescription(prod.id)">
     <div class="descriptionContainer hidden" id="{{prod.id}}">
 
       <div class="descriptionContainerTop">
         <button type="button">
-          <i class="uil uil-heart-alt"></i>
+          <i class="uil uil-heart-alt" *ngIf="!user?.liked"
+             (click)="addToFavorites(prod)"></i>
+          <i class="uil uil-heart-alt liked" *ngIf="user?.liked"
+             (click)="removeFromFavorites(prod)"></i>
         </button>
       </div>
 
 
-<!--      <a [routerLink]="['/products/collections/',prod.collection.path, prod.id]" (click)="check()">-->
-      <a  (click)="check(prod.id)">
+      <a [routerLink]="['/products/collections/',prod.collection.path, prod.id]">
         <div class="descriptionImg">
           <img [src]="prod.images[0]" alt="">
         </div>
@@ -39,7 +41,6 @@
       </div>
     </div>
   </div>
-
 
 
 </div>

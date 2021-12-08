@@ -61,11 +61,15 @@ footer{
           text-align: center;
         }
 
-        a{
+
+        li{
           display: block;
           margin-bottom: 10px;
-          @include text($primaryFont, 14px,$primaryColor);
-          text-decoration: none;
+
+          a{
+            @include text($primaryFont, 14px,$primaryColor);
+            text-decoration: none;
+          }
         }
       }
     }

@@ -14,7 +14,8 @@ export interface IProduct {
   modelHeight: number,
   modelSize: string,
   images: Array<string>,
-  count: number
+  count: number,
+  liked: boolean
 }
 
 export class Product implements IProduct {
@@ -31,7 +32,8 @@ export class Product implements IProduct {
     public modelHeight: number,
     public modelSize: string,
     public images: Array<string>,
-    public count: number
+    public count: number,
+    public liked: boolean
   ) {
   }
 }

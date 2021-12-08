@@ -1,55 +1,41 @@
 import {Injectable} from '@angular/core';
 import {IProduct} from "../../model/product/product.model";
-import axios from "axios";
 import {Observable} from "rxjs";
 import {AngularFireDatabase, AngularFireList} from "@angular/fire/compat/database";
+import {AngularFirestore, AngularFirestoreModule} from "@angular/fire/compat/firestore";
+import {ICollection} from "../../model/collection/collection.model";
+import {ICategory} from "../../model/category/category.model";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
 
-  private arrProducts: Array<IProduct> = []
-
   constructor(
     private db: AngularFireDatabase,
+    private afs: AngularFirestore
   ) {
   }
 
-  getProductsFirebase(): Observable<any> {
-    return this.db.list('/db/products').snapshotChanges();
+
+  getProducts(): Observable<any> {
+    return this.afs.collection<IProduct>('products').valueChanges({idField: 'id'});
   }
 
-  getProductsFirebaseData(): Observable<any> {
-    return this.db.list('/db/products').valueChanges();
+  getOneProduct(productID: string | null): Observable<any> {
+    return this.afs.doc<IProduct>(`products/${productID}`).valueChanges({idField: 'id'});
   }
 
-  getByCategory(categoryName: string): Observable<any> {
-    return this.db.list(`db/products/`).valueChanges();
+  pushProduct(product: IProduct) {
+    return this.afs.collection<IProduct>('products').add(product);
   }
 
-  getByID(id: string | null): Observable<any> {
-    return this.db.object(`/db/products/${id}`).valueChanges();
+  removeProduct(product: IProduct) {
+    return this.afs.doc<IProduct>(`products/${product.id}`).delete();
   }
 
-  // getByCollection(categoryName: string, collectionName: string): Observable<3
-  // any> {
-  //   return this.db.list(`db/products/`).valueChanges();
-  // }
-
-  // getOneProductFirebase(): Observable<any>{
-  //   return
-  // }
-
-  pushProductFirebase(product: IProduct) {
-    return this.db.list('/db/products').push(product);
+  updateProduct(product: IProduct, id: string) {
+    return this.afs.doc<IProduct>(`products/${id}`).update(product);
   }
 
-  removeProductFirebase(id: string) {
-    return this.db.list('/db/products').remove(id);
-  }
-
-  updateProductsFirebase(product: IProduct, id: string) {
-    return this.db.list("/db/products").update(id, product)
-  }
 }

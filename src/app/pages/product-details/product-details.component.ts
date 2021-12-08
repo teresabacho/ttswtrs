@@ -16,6 +16,7 @@ import {AngularFireAuth} from "@angular/fire/compat/auth";
 export class ProductDetailsComponent implements OnInit {
 
   public user: any;
+  public userFire: any = {};
   public asideIsOpen: boolean = false;
   public activeButton: boolean = false;
   public selectedSize: Array<string> = [];
@@ -23,6 +24,7 @@ export class ProductDetailsComponent implements OnInit {
   public sizeForm!: FormGroup;
   public productSize: Array<string> = [];
   public liked: boolean = false;
+  public likesArr: Array<IProduct> = [];
 
   constructor(
     private productService: ProductService,
@@ -39,6 +41,7 @@ export class ProductDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.initSizeForm();
     this.loadProduct();
+    this.loadUserFromLocal();
     this.loadUser();
   }
 
@@ -60,36 +63,15 @@ export class ProductDetailsComponent implements OnInit {
     })
   }
 
-  // loadIDs(): void {
-  //   setTimeout(() => {
-  //     this.productService.getProductsFirebase().subscribe(
-  //       data => {
-  //         let idDt = data.map((e: { key: { value: any; }; }) => e.key)
-  //         console.log(idDt)
-  //         this.userProducts.map((e, i) => {
-  //           e.id = idDt[i]
-  //         })
-  //       },
-  //       err => {
-  //         console.log(err)
-  //       }
-  //     )
-  //   }, 1000)
-  // }
-
-
   loadProduct(): void {
     const id = this.activatedRoute.snapshot.paramMap.get('id');
-    console.log("id", id)
-    this.productService.getByID(id).subscribe(
+    this.productService.getOneProduct(id).subscribe(
       data => {
         this.product = data;
         if (id != null) {
           this.product.id = id;
         }
         this.productSize = data.size;
-        console.log(this.productSize)
-        console.log("product", this.product)
       }, err => {
         console.log(err);
       }
@@ -99,53 +81,67 @@ export class ProductDetailsComponent implements OnInit {
 
   addToBasket(product: IProduct): void {
     this.selectedSize = Object.values(this.sizeForm.value);
-    console.log(this.selectedSize)
+    console.log("this.selectedSize", this.selectedSize)
     product.size = this.selectedSize;
-    console.log("product", product);
     this.orderService.addToBasket(product);
     this.initSizeForm();
   }
 
-  loadUser(): void {
+  loadUserFromLocal(): void {
     this.user = JSON.parse(<string>localStorage.getItem('user'));
   }
 
+
+  loadUser(): void {
+    this.authService.getUserInfoForLikes(this.user.id).subscribe(
+      data => {
+        this.userFire = data;
+        // console.log('this.userFire', this.userFire)
+      }, err => {
+        console.log(err);
+      }
+    )
+  }
+
   addToFavorites(product: IProduct): void {
-    // let user = JSON.parse(<string>localStorage.getItem('user'));
-    // const currentLiked = {liked:};
-    // this.user = JSON.parse(<string>localStorage.getItem('user'));
-    let liked: Array<IProduct> = [];
-    liked.push(product);
-
-
-
-    let obj = {
-      liked: liked
-    }
-
     if (localStorage.getItem('user')) {
-      console.log(JSON.parse(<string>localStorage.getItem('user')).liked.length)
-
-      // if (this.user.liked.length !== 0) {
-      //   console.log("have likes");
-      //
-      // } else {
-        // this.user.obj;
-      // }
-
-        console.log(obj)
-        this.authService.updateUserLiked(this.user.id, obj)
-          .then(() => {
-            this.updateLocalUser(this.user.id);
-          });
-        console.log("dont have likes");
-
-
-
-      this.liked = true;
+      if (this.userFire.liked.length !== 0) {
+        this.likesArr = this.userFire.liked.filter((el: any) => el.id !== product.id);
+        console.log(this.likesArr);
+        this.likesArr.push(product);
+      } else {
+        this.likesArr.push(product);
+      }
+      this.authService.updateUserLiked(this.user.id, this.likesArr)
+        .then(() => {
+          this.loadUser();
+        })
+        .catch(err => console.log(err))
+      this.product.liked = true;
+      this.productService.updateProduct(this.product, this.product.id)
+        .then(() => {
+          this.loadProduct();
+        })
+      this.likesArr = [];
     } else {
       alert("You are not authorized!");
     }
+  }
+
+  removeFromFavorites(product: IProduct): void{
+    this.likesArr = this.userFire.liked.filter((el: any) => el.id !== product.id);
+    console.log(this.likesArr)
+    this.authService.updateUserLiked(this.user.id, this.likesArr)
+      .then(() => {
+        this.loadUser();
+      })
+      .catch(err => console.log(err))
+    this.product.liked = false;
+    this.productService.updateProduct(this.product, this.product.id)
+      .then(() => {
+        this.loadProduct();
+      })
+    this.likesArr = [];
   }
 
   updateLocalUser(id: string): void {
@@ -157,7 +153,7 @@ export class ProductDetailsComponent implements OnInit {
             ...doc.data() as any
           };
           localStorage.setItem('user', JSON.stringify(user));
-          this.loadUser();
+          this.loadUserFromLocal();
           console.log("user", this.user)
         }
       })
