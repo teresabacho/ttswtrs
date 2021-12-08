@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "ttswtrs-f105e": {
+      "hosting": {
+        "ttswtrs": [
+          "ttswtrs-f105e"
+        ]
+      }
+    }
+  }
+}

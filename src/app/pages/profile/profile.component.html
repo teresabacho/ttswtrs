@@ -1,0 +1,73 @@
+<div class="secondContainer">
+
+  <form [formGroup]="profileForm" (ngSubmit)="updateProfileInfo()">
+
+    <h1>Your account</h1>
+
+    <div>
+      <span><a (click)="userSignOut()">Log Out</a></span>
+    </div>
+
+    <label for="email">First name</label>
+    <input type="text" formControlName="firstName" id="firstname">
+
+    <label for="email">Last name</label>
+    <input type="text" formControlName="lastName" id="lastname">
+
+    <label for="email">Email</label>
+    <input type="text" formControlName="email" id="email" readonly>
+
+    <label for="email">Phone</label>
+    <input type="text" formControlName="phone" id="phone">
+
+    <button class="addToBasketDis" type="button" *ngIf="profileForm.invalid">
+      <div class="addTxt" (mouseover)="changeSaveBtn()"
+           [ngClass]="{'displayNone' : activeButton, 'displayFlex' : !activeButton}">
+              <span class="buttonBuyPrice">
+                <span>Save</span>
+              </span>
+      </div>
+
+      <div class="selectTxt displayNone"
+           (mouseout)="changeSaveBtn()"
+           [ngClass]="{'displayNone' : !activeButton, 'displayFlex' : activeButton}">
+        <span>FILL ALL THE FIELDS</span>
+      </div>
+    </button>
+
+    <button class="addToBasketActive"
+            type="submit"
+            *ngIf="!profileForm.invalid">
+      <span class="selectASize">Save</span>
+    </button>
+
+
+  </form>
+
+  <div class="ordersBox">
+    <h2>Orders history</h2>
+    <div class="orders">
+      <table class="table">
+        <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Address</th>
+          <th scope="col" *ngFor="let pr of userOrders[2].products">
+            Product
+          </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="align-middle" *ngFor="let order of userOrders; index as i">
+          <td>{{ i + 1 }}</td>
+          <td>{{ order.address }} {{order.apartment}}, {{order.zipcode}}, {{order.city}}, {{order.country}}</td>
+          <td *ngFor="let prod of order.products" style="width: 50px">
+            <img [src]="prod.images[0]" alt="" style="width: 40px">
+          </td>
+        </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>

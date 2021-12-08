@@ -1,0 +1,38 @@
+<form [formGroup]="categoryForm"
+      (ngSubmit)="editStatus ? updateCategory() : createCategory()">
+  <div class="mb-3">
+    <label for="name" class="form-label">Name</label>
+    <input formControlName="name" type="text" class="form-control" id="name">
+  </div>
+  <div class="mb-3">
+    <label for="path" class="form-label">Path</label>
+    <input formControlName="path" type="text" class="form-control" id="path">
+  </div>
+  <button [disabled]="categoryForm.invalid"
+          type="submit"
+          class="btn btn-primary"
+          [textContent]="editStatus ? 'Save' : 'Add'"
+          [classList]="editStatus ? 'btn btn-success' : 'btn btn-primary'"></button>
+</form>
+<hr>
+<table class="table">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Name</th>
+    <th scope="col">Path</th>
+    <th scope="col">Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr class="align-middle" *ngFor="let category of adminCategories; index as i">
+    <td>{{ i + 1 }}</td>
+    <td>{{ category.name }}</td>
+    <td>{{ category.path }}</td>
+    <td>
+      <button (click)="editCategory(category)" class="btn btn-warning me-3">edit</button>
+      <button (click)="deleteCategory(category)" class="btn btn-danger">delete</button>
+    </td>
+  </tr>
+  </tbody>
+</table>

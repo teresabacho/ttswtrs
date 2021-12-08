@@ -1,0 +1,154 @@
+@import "src/app/shared/styles/variables";
+@import "src/app/shared/styles/mixins";
+
+.secondContainer {
+  background-color: $lightColor;
+
+  form {
+    padding: 15vh 10vw 5vh 10vw;
+
+    h1 {
+      @include text($boldPrimaryFont, 14px);
+      margin-bottom: 5vh;
+    }
+
+    div {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+
+      h3 {
+        @include text($primaryFont, 14px, 500, $sideColor);
+        margin-bottom: 5vh;
+      }
+
+      span {
+        position: relative;
+        @include text($primaryFont, 14px);
+        cursor: pointer;
+      }
+
+      a {
+        display: inline-block;
+        position: relative;
+      }
+
+      a:after {
+        position: absolute;
+        left: 0;
+        right: 0;
+        content: '';
+        height: 1px;
+        bottom: -1px;
+        background-color: $sdPrimaryColor;
+        transform: scaleX(1);
+        transform-origin: right;
+        pointer-events: none;
+        transition: transform .3s cubic-bezier(0.25, 0.1, 0.25, 1), background-color .3s cubic-bezier(0.25, 0.1, 0.25, 1);
+      }
+
+      span:hover a:after {
+        transform: scaleX(0);
+        transform-origin: left;
+      }
+    }
+
+    input {
+      display: inline-block;
+      text-align: start;
+      appearance: auto;
+      @include text($primaryFont, 14px);
+      line-height: 2rem;
+      letter-spacing: 0.035em;
+      border: none;
+      border-bottom: 1px solid #2d2d2d;
+      background: transparent;
+      padding: 1vh 0;
+      //width: 200px;
+      height: 30px;
+      margin-top: 1vh;
+      margin-bottom: 5vh;
+      width: 100%;
+    }
+
+    input:focus {
+      outline: none;
+    }
+
+    button {
+      //display: flex;
+      text-transform: uppercase;
+      height: 10vh;
+      border: solid 1px $primaryColor;
+      cursor: pointer;
+      border-radius: 0;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      transition: background 0.3s cubic-bezier(0.25, 0.1, 0.25, 1) 0s, color 0.3s cubic-bezier(0.25, 0.1, 0.25, 1) 0s, border-color 0.3s cubic-bezier(0.25, 0.1, 0.25, 1) 0s;
+      width: 100%;
+      margin-top: 5vh;
+
+      div {
+        height: 100%;
+        width: 100%;
+      }
+    }
+
+    .addToBasketDis {
+      background-color: transparent;
+      @include text($primaryFont, 14px, 500, $primaryColor);
+      opacity: 0.8;
+    }
+
+    .addToBasketActive {
+      background-color: $primaryColor;
+      @include text($primaryFont, 14px, 500, $lightColor);
+      opacity: 1;
+    }
+
+    .addToBasketActive:disabled {
+      opacity: 0.5;
+    }
+
+    .buttonBuyPrice {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      margin: 0 3vw 0 3vw;
+    }
+
+    .selectTxt {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+
+      span {
+        width: 100%;
+        height: 100%;
+        line-height: 10vh;
+      }
+    }
+
+  }
+
+  .ordersBox{
+    margin: 5vh 5vw 0 5vw;
+    //padding: 0 10vw;
+
+    h2{
+      @include text($boldPrimaryFont, 20px);
+      margin: 0;
+    }
+
+  }
+}
+
+
+.displayNone {
+  display: none !important;
+}

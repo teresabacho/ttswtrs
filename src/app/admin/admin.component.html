@@ -1,0 +1,23 @@
+<div class="container-fluid mt-3 mb-3 myPadding">
+  <div class="d-flex align-items-start">
+    <div class="nav flex-column nav-pills me-3">
+      <button class="nav-link" type="button" [routerLink]="[ 'collection' ]" routerLinkActive="active">
+        Collection
+      </button>
+      <button class="nav-link" type="button" [routerLink]="[ 'category' ]" routerLinkActive="active">
+        Category
+      </button>
+      <button class="nav-link" type="button" [routerLink]="[ 'product' ]" routerLinkActive="active">
+        Product
+      </button>
+      <button class="nav-link" type="button" [routerLink]="[ 'order' ]" routerLinkActive="active">
+        Order
+      </button>
+
+      <button class="btn btn-warning" type="button" (click)="signOut()">Log-out</button>
+    </div>
+    <div class="tab-content">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

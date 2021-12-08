@@ -1,0 +1,161 @@
+<form [formGroup]="productForm" class="form-control"
+      (ngSubmit)="editStatus ? updateProduct() : createProduct()">
+  <div class="mb-3">
+    <select formControlName="collection" class="form-select">
+      <option selected disabled>Select collection</option>
+      <option
+        *ngFor="let cat of adminCollections"
+        [ngValue]="cat">
+        {{cat.name}}
+      </option>
+    </select>
+  </div>
+  <div class="mb-3">
+    <select formControlName="category" class="form-select">
+      <option selected disabled>Select category</option>
+      <option
+        *ngFor="let col of adminCategories"
+        [ngValue]="col">
+        {{col.name}}
+      </option>
+    </select>
+  </div>
+
+  <div class="mb-3">
+    <label for="name" class="form-label">Name</label>
+    <input formControlName="name" type="text" class="form-control" id="name">
+  </div>
+  <div class="mb-3">
+    <label for="ref" class="form-label">Ref</label>
+    <input formControlName="ref" type="text" class="form-control" id="ref">
+  </div>
+  <div class="mb-3">
+    <label for="price" class="form-label">Price</label>
+    <input formControlName="price" type="text" class="form-control" id="price">
+  </div>
+  <div class="mb-3">
+    <label for="color" class="form-label">Color</label>
+    <input formControlName="color" type="text" class="form-control" id="color">
+  </div>
+  <div class="mb-3">
+    <label for="size" class="form-label">Size</label>
+    <input formControlName="size" type="text" class="form-control" id="size"
+           placeholder="write sizes like: 's, m, 32, 44...'">
+  </div>
+  <div class="mb-3">
+    <label for="composition" class="form-label">Composition</label>
+    <input formControlName="composition" type="text" class="form-control" id="composition"
+           placeholder="write composition like: '90% cotton, 10% elstan...'">
+  </div>
+  <div class="mb-3">
+    <label for="modelHeight" class="form-label">Model Height</label>
+    <input formControlName="modelHeight" type="text" class="form-control" id="modelHeight">
+  </div>
+  <div class="mb-3">
+    <label for="modelSize" class="form-label">Model Size</label>
+    <input formControlName="modelSize" type="text" class="form-control" id="modelSize">
+  </div>
+
+
+<!--  <label>Number of Images</label>-->
+<!--  <select formControlName="numberOfImages" class="form-control" (change)="onChangeImg($event)">-->
+<!--    <option value=""></option>-->
+<!--    <option *ngFor="let i of [1,2,3,4,5]">{{i}}</option>-->
+<!--  </select>-->
+
+
+<!--  <div *ngFor="let imgCont of t.controls; let i = index" class="container">-->
+<!--    <form [formGroup]="imagesForm">-->
+<!--      <div class="mb-3">-->
+<!--        <label for="formFile{{i}}" class="form-label">Image {{i + 1}}</label>-->
+<!--        <input (change)="uploadFile($event)" class="form-control" type="file"-->
+<!--               id="formFile{{i}}" formControlName="imageItem">-->
+<!--      </div>-->
+
+<!--      <div class="wrap" *ngFor="let img of images, index as i">-->
+<!--        <div class="progress mb-3">-->
+<!--          <div class="progress-bar progress-bar-striped bg-success" role="progressbar"-->
+<!--               [style.width]="(uploadPercent | async) + '%'" aria-valuenow="0" aria-valuemin="0"-->
+<!--               aria-valuemax="100"></div>-->
+<!--        </div>-->
+
+<!--        <div class="image-box" *ngIf="imageStatus || editStatus">-->
+<!--          <img width="100px" [src]="img" alt="">-->
+<!--          <button (click)="deleteFile()" type="button" class="btn btn-danger">Delete</button>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </form>-->
+<!--  </div>-->
+
+
+  <!--  Те, що було спочатку-->
+    <div class="mb-3">
+      <label for="formFile{{1}}" class="form-label">Image {{1 + 1}}</label>
+      <input (change)="uploadFile($event)" class="form-control" type="file"
+             id="formFile{{1}}" formControlName="images">
+    </div>
+
+    <div class="wrap" *ngFor="let img of images, index as i">
+      <div class="progress mb-3">
+        <div class="progress-bar progress-bar-striped bg-success" role="progressbar"
+             [style.width]="(uploadPercent | async) + '%'" aria-valuenow="0" aria-valuemin="0"
+             aria-valuemax="100"></div>
+      </div>
+
+      <div class="image-box" *ngIf="imageStatus || editStatus">
+        <img width="100px" [src]="img" alt="">
+        <button (click)="deleteFile()" type="button" class="btn btn-danger">Delete</button>
+      </div>
+    </div>
+
+
+  <button type="submit" class="btn btn-primary"
+          [disabled]="productForm.invalid"
+          [textContent]="editStatus ? 'Save' : 'Add'"
+          [classList]="editStatus ? 'btn btn-success' : 'btn btn-primary'">
+  </button>
+</form>
+
+
+<hr>
+
+<table class="table">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Collection</th>
+    <th scope="col">Category</th>
+    <th scope="col">Name</th>
+    <th scope="col">Ref</th>
+    <th scope="col">Price</th>
+    <th scope="col">Color</th>
+    <th scope="col">Size</th>
+    <th scope="col">Composition</th>
+    <th scope="col">Model Height</th>
+    <th scope="col">Model Size</th>
+    <th scope="col">Images</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr class="align-middle" *ngFor="let prod of adminProducts; index as i">
+    <td>{{ i + 1 }}</td>
+    <td>{{ prod.collection.name}}</td>
+    <td>{{ prod.category.name}}</td>
+    <td>{{ prod.name }}</td>
+    <td>{{ prod.ref }}</td>
+    <td>{{ prod.price }}</td>
+    <td>{{ prod.color }}</td>
+    <td>{{ prod.size }}</td>
+    <td>{{ prod.composition }}</td>
+    <td>{{ prod.modelHeight }}</td>
+    <td>{{ prod.modelSize }}</td>
+    <td *ngFor="let img of prod.images; index as imgI">
+      <img [src]="img" width="50px" alt="">
+    </td>
+    <td>
+      <button class="btn btn-warning me-3" (click)="editProduct(prod)">edit</button>
+      <button class="btn btn-danger" (click)="deleteProduct(prod)">delete</button>
+    </td>
+  </tr>
+  </tbody>
+</table>
